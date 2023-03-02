@@ -10,6 +10,33 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+.center {
+  justify-content: center;
+  background-color: rgba(245, 126, 39, 0.90);
+}
+
+.login-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  margin-bottom: 16px;
+}
+
+#btn-signup {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 5px;
+}
+
+#btn-signup:hover,
+#btn-signup:active {
+  background-color: #fff;
+  color: black;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -108,6 +135,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-weight: 500;
   line-height: 1.2;
 }
+
 
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
@@ -236,7 +264,7 @@ sup {
 }
 
 a {
-  color: #e6a756;
+  color: #ffffff;
   text-decoration: underline;
 }
 a:hover {
@@ -11303,8 +11331,8 @@ p {
 }
 
 .site-heading {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   line-height: 1;
   font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
