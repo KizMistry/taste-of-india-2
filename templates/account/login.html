@@ -24,7 +24,7 @@
   <div class="row center">
     <div class="col-md-8 mt-3 offset-m-2 login-form">
 
-      <form class="login" method="POST" action="{% url 'account_login' %}">
+      <form class="login" id="signup_form" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
