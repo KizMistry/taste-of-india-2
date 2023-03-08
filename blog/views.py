@@ -6,6 +6,19 @@ from django.http import HttpResponseRedirect
 
 
 # Create your views here.
+
+class Nav(View):
+
+    def about(request):
+        return render(request, "about.html")
+
+    def book(request):
+        return render(request, "book.html")
+
+    def meals(request):
+        return render(request, "meal.html")
+
+
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('created_on')
