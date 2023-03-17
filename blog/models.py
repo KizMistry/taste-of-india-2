@@ -7,34 +7,33 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 GUESTS = (
-    (1, "1"), (2, "2"), (3, "3"), (4, "4"),
-    (5, "5"), (6, "6"), (6, "6+"))
+    (2, "1-2"), (4, "3-4"), (6, "5-6"),)
 
 TIMES = (
-    ("11 AM", "11 AM"), ("11:30 AM", "11:30 AM"),
-    ("12 PM", "12 PM"), ("12:30 PM", "12:30 PM"),
-    ("1 PM", "1 PM"), ("1:30 PM", "1:30 PM"),
-    ("2 PM", "2 PM"), ("2:30 PM", "2:30 PM"),
-    ("3 PM", "3 PM"), ("3:30 PM", "3:30 PM"),
-    ("4 PM", "4 PM"), ("4:30 PM", "4:30 PM"),
-    ("5 PM", "5 PM"), ("5:30 PM", "5:30 PM"),
-    ("6 PM", "6 PM"), ("6:30 PM", "6:30 PM"),
-    ("7 PM", "7 PM"), ("7:30 PM", "7:30 PM"),
-    ("8 PM", "8 PM"), ("8:30 PM", "8:30 PM"),
-    ("9 PM", "9 PM"), ("9:30 PM", "9:30 PM"),
-    ("10 PM", "10 PM"), ("10:30 PM", "10:30 PM"),)
+    ("12:00 PM", "12:00 PM"), ("12:30 PM", "12:30 PM"),
+    ("1:00 PM", "1:00 PM"), ("1:30 PM", "1:30 PM"),
+    ("2:00 PM", "2:00 PM"), ("2:30 PM", "2:30 PM"),
+    ("3:00 PM", "3:00 PM"), ("3:30 PM", "3:30 PM"),
+    ("4:00 PM", "4:00 PM"), ("4:30 PM", "4:30 PM"),
+    ("5:00 PM", "5:00 PM"), ("5:30 PM", "5:30 PM"),
+    ("6:00 PM", "6:00 PM"), ("6:30 PM", "6:30 PM"),
+    ("7:00 PM", "7:00 PM"), ("7:30 PM", "7:30 PM"),
+    ("8:00 PM", "8:00 PM"), ("8:30 PM", "8:30 PM"),
+    ("9:00 PM", "9:00 PM"), ("9:30 PM", "9:30 PM"),
+    ("10:00 PM", "10:00 PM"),)
 
 
 class Booking(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
     guests = models.IntegerField(choices=GUESTS, default=2)
-    day = models.DateField(default=datetime.now)
-    time = models.CharField(max_length=20, choices=TIMES, default="6 PM")
-    time_booked = models.DateTimeField(default=datetime.now, blank=True)
+    day = models.DateField()
+    time = models.CharField(max_length=20, choices=TIMES, default="6:00 PM")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="bookings")
 
     def __str__(self):
-        return f"{self.user.username} | day: {self.day} | time: {self.time}"
+        return f"{self.name} | day: {self.day} | time: {self.time}"
 
 
 class Post(models.Model):

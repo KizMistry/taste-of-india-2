@@ -27,6 +27,6 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
 
-    list_display = ('user', 'guests', 'day', 'time')
-    search_fields = ['user',]
-    list_filter = ('user', 'guests', 'day', 'time')
+    list_display = ('name', 'day', 'time')
+    search_fields = ['name',]
+    list_filter = ('name', 'day', 'time')
