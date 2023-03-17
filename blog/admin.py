@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Post, Comment, Booking
+from .models import Meal, Review, Booking
 
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+@admin.register(Meal)
+class MealAdmin(admin.ModelAdmin):
 
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
@@ -12,8 +12,8 @@ class PostAdmin(admin.ModelAdmin):
     summernote_fields = ('content')
 
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'body', 'post', 'created_on', 'approved')
     search_fields = ['name', 'email', 'body']
