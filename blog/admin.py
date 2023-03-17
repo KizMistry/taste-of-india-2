@@ -5,11 +5,11 @@ from .models import Meal, Review, Booking
 @admin.register(Meal)
 class MealAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'slug', 'status', 'created_on')
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ('meal_name', 'slug', 'status', 'created_on')
+    search_fields = ['meal_name', 'description']
+    prepopulated_fields = {'slug': ('meal_name',)}
     list_filter = ('status', 'created_on')
-    summernote_fields = ('content')
+    summernote_fields = ('description')
 
 
 @admin.register(Review)

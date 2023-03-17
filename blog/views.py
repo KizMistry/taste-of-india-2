@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Meal
-from .forms import CommentForm
+from .forms import ReviewForm
 from django.http import HttpResponseRedirect
 
 
@@ -43,7 +43,7 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": ReviewForm()
             },
         )
 
@@ -53,7 +53,7 @@ class PostDetail(View):
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
 
-        comment_form = CommentForm(data=request.POST)
+        comment_form = ReviewForm(data=request.POST)
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -62,7 +62,7 @@ class PostDetail(View):
             comment.post = post
             comment.save()
         else:
-            comment_form = CommentForm()
+            comment_form = ReviewForm()
 
         return render(
             request,
@@ -72,7 +72,7 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": ReviewForm()
             },
         )
 
