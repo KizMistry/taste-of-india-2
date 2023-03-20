@@ -18,9 +18,9 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'meal', 'created_on', 'approved')
     search_fields = ['name', 'email', 'body']
     list_filter = ('approved', 'created_on')
-    actions = ['approve_comments']
+    actions = ['approve_reviews']
 
-    def approve_comments(self, request, queryset):
+    def approve_reviews(self, request, queryset):
         queryset.update(approved=True)
 
 

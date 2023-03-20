@@ -31,7 +31,7 @@ class MealDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Meal.objects.filter(status=1)
         meal = get_object_or_404(queryset, slug=slug)
-        comments = meal.comments.filter(approved=True).order_by('created_on')
+        reviews = meal.reviews.filter(approved=True).order_by('created_on')
         liked = False
         if meal.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -40,8 +40,8 @@ class MealDetail(View):
             "meal_detail.html",
             {
                 "meal": meal,
-                "comments": comments,
-                "commented": False,
+                "reviews": reviews,
+                "reviewed": False,
                 "liked": liked,
                 "review_form": ReviewForm()
             },
@@ -50,7 +50,7 @@ class MealDetail(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Meal.objects.filter(status=1)
         meal = get_object_or_404(queryset, slug=slug)
-        comments = meal.comments.filter(approved=True).order_by('created_on')
+        reviews = meal.reviews.filter(approved=True).order_by('created_on')
         liked = False
 
         review_form = ReviewForm(data=request.POST)
@@ -58,9 +58,9 @@ class MealDetail(View):
         if review_form.is_valid():
             review_form.instance.email = request.user.email
             review_form.instance.name = request.user.username
-            comment = review_form.save(commit=False)
-            comment.meal = meal
-            comment.save()
+            review = review_form.save(commit=False)
+            review.meal = meal
+            review.save()
         else:
             review_form = ReviewForm()
 
@@ -69,8 +69,8 @@ class MealDetail(View):
             "meal_detail.html",
             {
                 "meal": meal,
-                "comments": comments,
-                "commented": True,
+                "reviews": reviews,
+                "reviewed": True,
                 "liked": liked,
                 "review_form": ReviewForm()
             },
