@@ -6,19 +6,19 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
+                <!-- Meal title goes in these h1 tags -->
                 <h1 class="post-title">
-                    {{ post.meal_name }}
+                    {{ meal.meal_name }}
                 </h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ post.author }} | </p>
+                <!-- Meal author goes before the | the meal's created date goes after -->
+                <p class="post-subtitle">{{ meal.author }} | </p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
-                {% if "placeholder" in post.featured_image.url %}
+                {% if "placeholder" in meal.featured_image.url %}
                 <img src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg" width="100%">
                 {% else %}
-                <img src="{{ post.featured_image.url }}" width="100%">
+                <img src="{{ meal.featured_image.url }}" width="100%">
                 {% endif %}
             </div>
         </div>
@@ -32,25 +32,25 @@
                 <!-- The meal description goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text ">
-                    {{ post.description | safe }}
+                    {{ meal.description | safe }}
                 </p>
                 <div class="row">
 
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'meal_like' meal.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
-                            <span class="text-secondary">{{ post.number_of_likes }}</span>
+                            <span class="text-secondary">{{ meal.number_of_likes }}</span>
                         </strong>
                     </div>
                     <div class="col-1">

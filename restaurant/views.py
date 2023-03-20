@@ -26,20 +26,20 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-class PostDetail(View):
+class MealDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Meal.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by('created_on')
+        meal = get_object_or_404(queryset, slug=slug)
+        comments = meal.comments.filter(approved=True).order_by('created_on')
         liked = False
-        if post.likes.filter(id=self.request.user.id).exists():
+        if meal.likes.filter(id=self.request.user.id).exists():
             liked = True
         return render(
             request,
-            "post_detail.html",
+            "meal_detail.html",
             {
-                "post": post,
+                "meal": meal,
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
@@ -49,8 +49,8 @@ class PostDetail(View):
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Meal.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by('created_on')
+        meal = get_object_or_404(queryset, slug=slug)
+        comments = meal.comments.filter(approved=True).order_by('created_on')
         liked = False
 
         comment_form = ReviewForm(data=request.POST)
@@ -59,16 +59,16 @@ class PostDetail(View):
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
-            comment.post = post
+            comment.meal = meal
             comment.save()
         else:
             comment_form = ReviewForm()
 
         return render(
             request,
-            "post_detail.html",
+            "meal_detail.html",
             {
-                "post": post,
+                "meal": meal,
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
@@ -77,14 +77,14 @@ class PostDetail(View):
         )
 
 
-class PostLike(View):
+class MealLike(View):
 
     def post(self, request, slug):
-        post = get_object_or_404(Meal, slug=slug)
+        meal = get_object_or_404(Meal, slug=slug)
 
-        if post.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
+        if meal.likes.filter(id=request.user.id).exists():
+            meal.likes.remove(request.user)
         else:
-            post.likes.add(request.user)
+            meal.likes.add(request.user)
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('meal_detail', args=[slug]))

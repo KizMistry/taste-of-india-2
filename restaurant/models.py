@@ -41,13 +41,13 @@ class Meal(models.Model):
     meal_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts")
+        User, on_delete=models.CASCADE, related_name="restaurant_posts")
     description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
+    likes = models.ManyToManyField(User, related_name='restaurant_likes', blank=True)
 
     class Meta:
         ordering = ['-created_on']
@@ -61,7 +61,7 @@ class Meal(models.Model):
 
 class Review(models.Model):
 
-    post = models.ForeignKey(
+    meal = models.ForeignKey(
         Meal, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
