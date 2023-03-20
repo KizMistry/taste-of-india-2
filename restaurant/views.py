@@ -43,7 +43,7 @@ class MealDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "comment_form": ReviewForm()
+                "review_form": ReviewForm()
             },
         )
 
@@ -53,16 +53,16 @@ class MealDetail(View):
         comments = meal.comments.filter(approved=True).order_by('created_on')
         liked = False
 
-        comment_form = ReviewForm(data=request.POST)
+        review_form = ReviewForm(data=request.POST)
 
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
+        if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.name = request.user.username
+            comment = review_form.save(commit=False)
             comment.meal = meal
             comment.save()
         else:
-            comment_form = ReviewForm()
+            review_form = ReviewForm()
 
         return render(
             request,
@@ -72,7 +72,7 @@ class MealDetail(View):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
-                "comment_form": ReviewForm()
+                "review_form": ReviewForm()
             },
         )
 
