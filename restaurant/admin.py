@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Meal, Review, Booking
+from .models import Meal, Review, Booking, Table
 
 
 @admin.register(Meal)
@@ -27,6 +27,14 @@ class ReviewAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'day', 'time')
+    list_display = ('name', 'date', 'time')
     search_fields = ['name',]
-    list_filter = ('name', 'day', 'time')
+    list_filter = ('name', 'date', 'time')
+
+
+@admin.register(Table)
+class TableAdmin(admin.ModelAdmin):
+
+    list_display = ('number', 'size', 'available')
+    search_fields = ['number', 'size', 'available',]
+    list_filter = ('number', 'size', 'available')

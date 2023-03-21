@@ -1,4 +1,4 @@
-from .models import Review, Booking
+from .models import Review, Booking, Table
 from django import forms
 
 
@@ -11,4 +11,4 @@ class ReviewForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('name', 'email', 'guests', 'day', 'time', 'user')
+        fields = ('name', 'email', 'phone', 'date', 'time', 'tables', 'notes',)

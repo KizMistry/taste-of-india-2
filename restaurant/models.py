@@ -22,18 +22,46 @@ TIMES = (
     ("9:00 PM", "9:00 PM"), ("9:30 PM", "9:30 PM"),
     ("10:00 PM", "10:00 PM"),)
 
+SEATING_CHOICES = [
+        (2, '2 seats'),
+        (4, '4 seats'),
+        (6, '6 seats'),]
 
-class Booking(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    guests = models.IntegerField(choices=GUESTS, default=2)
-    day = models.DateField()
-    time = models.CharField(max_length=20, choices=TIMES, default="6:00 PM")
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="bookings")
+
+class Table(models.Model):
+
+    number = models.PositiveIntegerField()
+    size = models.IntegerField(choices=SEATING_CHOICES, default=2)
+    available = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.name} | day: {self.day} | time: {self.time}"
+        return f'Table {self.number} ({self.size} seats)'
+
+
+class Booking(models.Model):
+    name = models.CharField(max_length=100, default='')
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, default='')
+    date = models.DateField()
+    time = models.TimeField()
+    tables = models.ManyToManyField(Table)
+    notes = models.TextField(blank=True)
+
+    def __str__(self):
+        return f'{self.name} ({self.date} {self.time})'
+
+
+# class Booking(models.Model):
+#     name = models.CharField(max_length=100)
+#     email = models.EmailField()
+#     guests = models.IntegerField(choices=GUESTS, default=2)
+#     day = models.DateField()
+#     time = models.CharField(max_length=20, choices=TIMES, default="6:00 PM")
+#     user = models.ForeignKey(
+#         User, on_delete=models.CASCADE, related_name="bookings")
+
+#     def __str__(self):
+#         return f"{self.name} | day: {self.day} | time: {self.time}"
 
 
 class Meal(models.Model):
@@ -41,7 +69,7 @@ class Meal(models.Model):
     meal_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="restaurant_posts")
+        User, on_delete=models.CASCADE, related_name='restaurant_posts')
     description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -74,4 +102,4 @@ class Review(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Review {self.body} by {self.name}"
+        return f'Review {self.body} by {self.name}'
