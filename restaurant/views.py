@@ -108,6 +108,19 @@ class BookingView(View):
             },
         )
 
+
+class BookingCreate(View):
+
+    def get(self, request, *args, **kwargs):
+        booking_form = BookingForm()
+        return render(
+            request,
+            'booking_create.html',
+            {
+                'booking_form': BookingForm(),
+            },
+        )
+
     # @login_required
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -123,7 +136,7 @@ class BookingView(View):
             booking_form = BookingForm()
         return render(
             request,
-            'booking_list.html',
+            'booking_create.html',
             {
                 'booking_form': BookingForm()
             },
