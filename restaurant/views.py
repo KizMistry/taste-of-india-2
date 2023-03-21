@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from .models import Meal
-from .forms import ReviewForm
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.utils import timezone
+from .models import Meal, Booking, Table
+from .forms import ReviewForm, BookingForm
 from django.http import HttpResponseRedirect
 
 
@@ -10,13 +13,13 @@ from django.http import HttpResponseRedirect
 class Nav(View):
 
     def about(request):
-        return render(request, "about.html")
+        return render(request, 'about.html')
 
     def book(request):
-        return render(request, "book.html")
+        return render(request, 'booking_list.html')
 
     def meals(request):
-        return render(request, "meal.html")
+        return render(request, 'meal.html')
 
 
 class PostList(generic.ListView):
@@ -37,13 +40,13 @@ class MealDetail(View):
             liked = True
         return render(
             request,
-            "meal_detail.html",
+            'meal_detail.html',
             {
-                "meal": meal,
-                "reviews": reviews,
-                "reviewed": False,
-                "liked": liked,
-                "review_form": ReviewForm()
+                'meal': meal,
+                'reviews': reviews,
+                'reviewed': False,
+                'liked': liked,
+                'review_form': ReviewForm()
             },
         )
 
@@ -66,13 +69,13 @@ class MealDetail(View):
 
         return render(
             request,
-            "meal_detail.html",
+            'meal_detail.html',
             {
-                "meal": meal,
-                "reviews": reviews,
-                "reviewed": True,
-                "liked": liked,
-                "review_form": ReviewForm()
+                'meal': meal,
+                'reviews': reviews,
+                'reviewed': True,
+                'liked': liked,
+                'review_form': ReviewForm()
             },
         )
 
@@ -88,3 +91,40 @@ class MealLike(View):
             meal.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('meal_detail', args=[slug]))
+
+
+class BookingView(View):
+
+    # @login_required
+    def get(self, request, *args, **kwargs):
+        bookings = Booking.objects.filter(email=request.user.email)
+        booking_form = BookingForm()
+        return render(
+            request,
+            'booking_list.html',
+            {
+                'bookings': bookings,
+                'booking_form': BookingForm(),
+            },
+        )
+
+    # @login_required
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                booking = form.save(commit=False)
+                booking.email = request.user.email
+                booking.save()
+                form.save_m2m()
+                messages.success(request, 'Booking created successfully.')
+                return redirect('booking_list')
+        else:
+            booking_form = BookingForm()
+        return render(
+            request,
+            'booking_list.html',
+            {
+                'booking_form': BookingForm()
+            },
+        )

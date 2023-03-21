@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <!-- <h1>Create Booking</h1>
+  <form method="POST">
+    {% csrf_token }
+    {{ form.as_p } -->
+    {% if user.is_authenticated %}
+
+                <h3>Book a Table:</h3>
+                <p>Table for: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ booking_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Create Booking</button>
+                </form>
+                {% endif %}
+    <!-- <button type="submit">Create Booking</button>
+  </form> -->
+{% endblock %}
