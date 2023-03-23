@@ -6,6 +6,7 @@
 <div class="container text-center login-container">
     <div class="row center">
         <div class="col-md-8 mt-3 offset-m-2 login-form">
+            {% if user.is_authenticated %}
             <h1>Your Reservations</h1>
             <table>
                 <thead>
@@ -26,10 +27,15 @@
                     <tr>
                         <td colspan="3">You currently have no reservations</td>
                     </tr>
-                    <button><a href="booking_create.html">Make a Reservation</a></button>
+                    <!-- <button><a href="booking_create.html">Make a Reservation</a></button> -->
                     {% endfor %}
                 </tbody>
             </table>
+            <button><a href="{% url 'booking_create' %}">Make a Reservation</a></button>
+
+            {% else %}
+            <h1>Please Login / Register to book a table</h1>
+            {% endif %}
             <!-- <h3>Book a Table:</h3>
   <p>Table for: {{ user.username },}</p>
   <form method="POST" style="margin-top: 1.3em;">

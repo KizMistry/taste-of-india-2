@@ -15,8 +15,8 @@ class Nav(View):
     def about(request):
         return render(request, 'about.html')
 
-    def book(request):
-        return render(request, 'booking_list.html')
+    # def book(request):
+    #     return render(request, 'booking_list')
 
     def meals(request):
         return render(request, 'meal.html')
@@ -97,13 +97,13 @@ class BookingView(View):
 
     # @login_required
     def get(self, request, *args, **kwargs):
-        bookings = Booking.objects.filter(email=request.user.email)
+        # bookings = Booking.objects.filter(email=request.user.email)
         booking_form = BookingForm()
         return render(
             request,
             'booking_list.html',
             {
-                'bookings': bookings,
+                # 'bookings': bookings,
                 'booking_form': BookingForm(),
             },
         )

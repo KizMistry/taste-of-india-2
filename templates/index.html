@@ -3,58 +3,26 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for meal in post_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in meal.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ meal.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ meal.author }}</p>
-                                </div>
-                                <a href="{% url 'meal_detail' meal.slug %}" class="post-link">
-                                    <h2 class="card-title">{{ meal.meal_name }}</h2>
-                                    <p class="card-text">{{ meal.excerpt }}</p>
-                                </a>
-                                <hr />
-                                <p class="card-text text-muted h6"><i class="far fa-heart"></i>
-                                    {{ meal.number_of_likes }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
-        </div>
+<div class="hero">
+    <h2>Welcome to Taste of India</h2>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Check out our Menu</h3>
+        <p>Full of flavor and choice, our menu contains the most popular, tasty and authentic Indian dishes</p>
+        <img src="" alt="">
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+    <div class="col-md-4">
+        <h3>Check out our Meal blog</h3>
+        <p>Have your say with the Meal blog. Leave your review and drop a like on the meals you enjoy the most.</p>
+        <img src="" alt="">
+    </div>
+    <div class="col-md-4">
+        <h3>Find out about us</h3>
+        <p>More information about Taste of India's background, our opening times, location and contact details</p>
+        <img src="" alt="">
+    </div>
+</div>
 </div>
 
 {%endblock%}
