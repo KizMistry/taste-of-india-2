@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date, time
+from datetime import datetime, time
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
@@ -38,14 +38,14 @@ class Booking(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20, default='')
     date = models.DateField()
-    TIMES = (
-        ("12:00", "12:00 PM"), ("13:00", "1:00 PM"),
-        ("14:00", "2:00 PM"), ("15:00", "3:00 PM"),
-        ("16:00", "4:00 PM"), ("17:00", "5:00 PM"),
-        ("18:00", "6:00 PM"), ("19:00", "7:00 PM"),
-        ("20:00", "8:00 PM"), ("21:00", "9:00 PM"),
-        ("22:00", "10:00 PM"),)
-    time = models.TimeField(choices=TIMES)
+    # TIMES = int(
+    #     (12:00, "12:00 PM"), (13:00, "1:00 PM"),
+    #     (14:00, "2:00 PM"), (15:00, "3:00 PM"),
+    #     (16:00, "4:00 PM"), (17:00, "5:00 PM"),
+    #     (18:00, "6:00 PM"), (19:00, "7:00 PM"),
+    #     (20:00, "8:00 PM"), (21:00, "9:00 PM"),
+    #     (22:00, "10:00 PM"),)
+    time = models.TimeField(default=time(12, 12))
     tables = models.ManyToManyField(Table)
     notes = models.TextField(blank=True)
 
