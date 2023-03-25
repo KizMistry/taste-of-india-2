@@ -14,14 +14,16 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Date</th>
+                        <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for booking in bookings %}
                     <tr>
-                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.pk }}</td>
                         <td>{{ booking.name }}</td>
                         <td>{{ booking.date }}</td>
+                        <td>{{ booking.time }}</td>
                     </tr>
                     {% empty %}
                     <tr>

@@ -97,13 +97,13 @@ class BookingView(View):
 
     # @login_required
     def get(self, request, *args, **kwargs):
-        # bookings = Booking.objects.filter(email=request.user.email)
+        bookings = Booking.objects.filter(id=self.request.user.id)
         booking_form = BookingForm()
         return render(
             request,
             'booking_list.html',
             {
-                # 'bookings': bookings,
+                'bookings': bookings,
                 'booking_form': BookingForm(),
             },
         )
@@ -123,15 +123,20 @@ class BookingCreate(View):
 
     # @login_required
     def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            form = BookingForm(request.POST)
-            if form.is_valid():
-                booking = form.save(commit=False)
-                booking.email = request.user.email
-                booking.save()
-                form.save_m2m()
-                messages.success(request, 'Booking created successfully.')
-                return redirect('booking_list')
+        form = BookingForm(request.POST)
+        # if form == 'POST':
+        if form.is_valid():
+            # booking = form.save(commit=False)
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            notes = form.cleaned_data['notes']
+            form.save()
+            # booking.email = request.user.email
+            # booking.save()
+            # form.save_m2m()
+            messages.success(request, 'Booking created successfully.')
+            return HttpResponseRedirect(reverse('booking_list'))
         else:
             booking_form = BookingForm()
         return render(
