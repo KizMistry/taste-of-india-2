@@ -97,12 +97,14 @@ class BookingView(View):
 
     # @login_required
     def get(self, request, *args, **kwargs):
+        all_bookings = Booking.objects.all()
         bookings = Booking.objects.filter(id=self.request.user.id)
         booking_form = BookingForm()
         return render(
             request,
             'booking_list.html',
             {
+                'all_bookings': all_bookings,
                 'bookings': bookings,
                 'booking_form': BookingForm(),
             },
@@ -115,7 +117,7 @@ class BookingCreate(View):
         booking_form = BookingForm()
         return render(
             request,
-            'booking_create.html',
+            'create_booking.html',
             {
                 'booking_form': BookingForm(),
             },
@@ -131,17 +133,25 @@ class BookingCreate(View):
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
-            form.save()
+            table_for = form.cleaned_data['table_for']
+            available_tables = Table.objects.filter(number=table_for, available=True)
+            if len(available_tables) > 0:
+                table = available_tables[0]
+                table.available = False
+                table.save()
+                form.save()
+                messages.success(request, 'Booking created successfully.')
+                return HttpResponseRedirect(reverse('booking_list'))
+            else:
+                messages.error(request, 'No table available')
+                print('error')
             # booking.email = request.user.email
             # booking.save()
             # form.save_m2m()
-            messages.success(request, 'Booking created successfully.')
-            return HttpResponseRedirect(reverse('booking_list'))
-        else:
-            booking_form = BookingForm()
+            # booking_form = BookingForm()
         return render(
             request,
-            'booking_create.html',
+            'create_booking.html',
             {
                 'booking_form': BookingForm()
             },
