@@ -47,6 +47,7 @@ class Booking(models.Model):
     #     (22:00, "10:00 PM"),)
     time = models.TimeField(default=time(12, 12))
     tables = models.ManyToManyField(Table)
+    table_for = models.IntegerField(default=1)
     notes = models.TextField(blank=True)
 
     def __str__(self):

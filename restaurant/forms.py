@@ -21,7 +21,7 @@ class BookingForm(forms.ModelForm):
     class Meta:
         TIME_CHOICES = [(time(hour=x), '{:02d}:00'.format(x)) for x in range(12, 23)]
         model = Booking
-        fields = ('name', 'email', 'phone', 'date', 'time', 'tables', 'notes',)
+        fields = ('name', 'email', 'phone', 'date', 'table_for', 'time', 'notes',)
         widgets = {
             'date': DateInput(),
             'time': forms.Select(choices=TIME_CHOICES)
