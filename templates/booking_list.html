@@ -6,12 +6,13 @@
 <div class="container text-center login-container">
     <div class="row center">
         <div class="col-md-8 mt-3 offset-m-2 login-form">
+            {{ all_bookings }}
             {% if user.is_authenticated %}
             <h1>Your Reservations</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Name</th>
                         <th>Date</th>
                         <th>Time</th>
@@ -20,20 +21,22 @@
                 <tbody>
                     {% for booking in bookings %}
                     <tr>
-                        <td>{{ booking.pk }}</td>
+                        <!-- <td>{{ booking.id },}</td> -->
                         <td>{{ booking.name }}</td>
                         <td>{{ booking.date }}</td>
                         <td>{{ booking.time }}</td>
+                        <td><button><a href="#">Edit</a></button></td>
+                        <td><button><a href="#">Delete</a></button></td>
                     </tr>
                     {% empty %}
                     <tr>
                         <td colspan="3">You currently have no reservations</td>
                     </tr>
-                    <!-- <button><a href="booking_create.html">Make a Reservation</a></button> -->
+                    <!-- <button><a href="create_booking.html">Make a Reservation</a></button> -->
                     {% endfor %}
                 </tbody>
             </table>
-            <button><a href="{% url 'booking_create' %}">Make a Reservation</a></button>
+            <button><a href="{% url 'create_booking' %}">Make a Reservation</a></button>
 
             {% else %}
             <h1>Please Login / Register to book a table</h1>
