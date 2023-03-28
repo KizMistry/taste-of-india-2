@@ -51,7 +51,11 @@ class Booking(models.Model):
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.name} ({self.date} {self.time})'
+        return f'''Name: {self.name} - Email: {self.email} -
+        Phone: {self.phone} -
+        Table booked for: ({self.date} at {self.time}) -
+        Table for: {self.table_for} -
+        Notes: {self.notes}'''
 
 
 # class Booking(models.Model):

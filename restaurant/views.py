@@ -15,9 +15,6 @@ class Nav(View):
     def about(request):
         return render(request, 'about.html')
 
-    # def book(request):
-    #     return render(request, 'booking_list')
-
     def meals(request):
         return render(request, 'meal.html')
 
@@ -95,7 +92,6 @@ class MealLike(View):
 
 class BookingView(View):
 
-    # @login_required
     def get(self, request, *args, **kwargs):
         all_bookings = Booking.objects.all()
         bookings = Booking.objects.filter(id=self.request.user.id)
@@ -123,18 +119,16 @@ class BookingCreate(View):
             },
         )
 
-    # @login_required
     def post(self, request, *args, **kwargs):
         form = BookingForm(request.POST)
-        # if form == 'POST':
         if form.is_valid():
-            # booking = form.save(commit=False)
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
             table_for = form.cleaned_data['table_for']
-            available_tables = Table.objects.filter(number=table_for, available=True)
+            available_tables = Table.objects.filter(
+                number=table_for, available=True)
             if len(available_tables) > 0:
                 table = available_tables[0]
                 table.available = False
@@ -145,10 +139,6 @@ class BookingCreate(View):
             else:
                 messages.error(request, 'No table available')
                 print('error')
-            # booking.email = request.user.email
-            # booking.save()
-            # form.save_m2m()
-            # booking_form = BookingForm()
         return render(
             request,
             'create_booking.html',
