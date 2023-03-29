@@ -127,18 +127,55 @@ class BookingCreate(View):
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
             table_for = form.cleaned_data['table_for']
-            available_tables = Table.objects.filter(
-                number=table_for, available=True)
-            if len(available_tables) > 0:
-                table = available_tables[0]
-                table.available = False
-                table.save()
-                form.save()
-                messages.success(request, 'Booking created successfully.')
-                return HttpResponseRedirect(reverse('booking_list'))
+            date = form.cleaned_data['date']
+            time = form.cleaned_data['time']
+            print(date, time, table_for)
+            # get all bookings from selected date
+            booking_date = Booking.objects.filter(
+                date=date, time=time, table_for=table_for)
+            # if number of guests is 2 or 6
+            if table_for != 4:
+                # if less than 5 bookings at this time and date, save the
+                # booking and redirect
+                if len(booking_date) < 5:
+                    form.save()
+                    print(booking_date, len(booking_date))
+                    messages.success(request, 'Booking created successfully.')
+                    return HttpResponseRedirect(reverse('booking_list'))
+                # if 5 bookings at chosen time and date, error message
+                else:
+                    messages.error(request, 'No table available at this time')
+                    print('error')
+            # if number of guests is 4
             else:
-                messages.error(request, 'No table available')
-                print('error')
+                # if less than 10 bookings at this time and date, save the
+                # booking and redirect
+                if len(booking_date) < 3:
+                    form.save()
+                    print(booking_date, len(booking_date))
+                    messages.success(request, 'Booking created successfully.')
+                    return HttpResponseRedirect(reverse('booking_list'))
+                else:
+                    messages.error(request, 'No table available at this time')
+                    print('error')
+            print(booking_date, len(booking_date))
+            # breakpoint()
+            # available_tables = Table.objects.filter(
+            #     number=table_for, available=True)
+            # if len(available_tables) > 0:
+            #     table = available_tables[0]
+            #     table.available = False
+            #     table.save()
+            #     form.save()
+            #     messages.success(request, 'Booking created successfully.')
+            #     return HttpResponseRedirect(reverse('booking_list'))
+            # else:
+            #     messages.error(request, 'No table available at this time')
+            #     print('error')
+        # if form is not valid, error message
+        else:
+            messages.error(request, 'Information entered is invalid')
+            print('error')
         return render(
             request,
             'create_booking.html',
