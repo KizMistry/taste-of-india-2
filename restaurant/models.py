@@ -34,21 +34,26 @@ class Table(models.Model):
 
 
 class Booking(models.Model):
+    account = models.CharField(max_length=5000, default='')
     name = models.CharField(max_length=100, default='')
     email = models.EmailField()
     phone = models.CharField(max_length=12, default='')
     date = models.DateField()
     time = models.TimeField(default=time(12, 12))
-    tables = models.ManyToManyField(Table)
+    # tables = models.ManyToManyField(Table)
     table_for = models.IntegerField(choices=SEATING_CHOICES, default=2)
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f'''Name: {self.name} - Email: {self.email} -
+        return f'''
+        User: {self.account}
+        Name: {self.name} -
+        Email: {self.email} -
         Phone: {self.phone} -
         Table booked for: ({self.date} at {self.time}) -
         Table for: {self.table_for} -
-        Notes: {self.notes}'''
+        Notes: {self.notes}
+        '''
 
 
 # class Booking(models.Model):
