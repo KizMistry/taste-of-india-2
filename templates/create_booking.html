@@ -3,24 +3,24 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
 <div class="container text-center login-container">
-  <div class="row center">
-      <div class="col-md-8 mt-3 offset-m-2 login-form">
-          <h3>Book a Table:</h3>
-          <p>Table for: {{ user.username }}</p>
-          <form method="POST" style="margin-top: 1.3em;">
-              {{ booking_form | crispy }}
-              {% csrf_token %}
-              <button type="submit" class="btn btn-signup btn-lg">Create Booking</button>
-          </form>
-      </div>
-  </div>
+    <div class="row center">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="col-md-8 mt-3 offset-m-2 login-form">
+            <h3>Book a Table:</h3>
+            <p>Table for: {{ user.username }}</p>
+            <form method="POST" style="margin-top: 1.3em;">
+                {{ booking_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-signup btn-lg">Create Booking</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
