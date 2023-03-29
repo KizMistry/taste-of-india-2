@@ -27,9 +27,9 @@ class ReviewAdmin(admin.ModelAdmin):
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'date', 'time')
+    list_display = ('name', 'date', 'time', 'table_for')
     search_fields = ['name',]
-    list_filter = ('name', 'date', 'time')
+    list_filter = ('name', 'date', 'time', 'table_for')
 
 
 @admin.register(Table)
