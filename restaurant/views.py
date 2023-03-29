@@ -94,7 +94,9 @@ class BookingView(View):
 
     def get(self, request, *args, **kwargs):
         all_bookings = Booking.objects.all()
-        bookings = Booking.objects.filter(id=self.request.user.id)
+        bookings = Booking.objects.filter(account=self.request.user.id)
+        print('bookings:', bookings)
+        # breakpoint()
         booking_form = BookingForm()
         return render(
             request,
@@ -121,7 +123,11 @@ class BookingCreate(View):
 
     def post(self, request, *args, **kwargs):
         form = BookingForm(request.POST)
+        Booking.account = self.request.user.id
+        print(f'the user id is: {Booking.account}')
+        # user = self.request.user.id
         if form.is_valid():
+            # form.data['account'] = Booking.account
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
@@ -131,15 +137,15 @@ class BookingCreate(View):
             time = form.cleaned_data['time']
             print(date, time, table_for)
             # get all bookings from selected date
-            booking_date = Booking.objects.filter(
+            table_booked = Booking.objects.filter(
                 date=date, time=time, table_for=table_for)
             # if number of guests is 2 or 6
             if table_for != 4:
                 # if less than 5 bookings at this time and date, save the
                 # booking and redirect
-                if len(booking_date) < 5:
+                if len(table_booked) < 5:
                     form.save()
-                    print(booking_date, len(booking_date))
+                    print(table_booked, len(table_booked))
                     messages.success(request, 'Booking created successfully.')
                     return HttpResponseRedirect(reverse('booking_list'))
                 # if 5 bookings at chosen time and date, error message
@@ -150,15 +156,15 @@ class BookingCreate(View):
             else:
                 # if less than 10 bookings at this time and date, save the
                 # booking and redirect
-                if len(booking_date) < 3:
+                if len(table_booked) < 3:
                     form.save()
-                    print(booking_date, len(booking_date))
+                    print(table_booked, len(table_booked))
                     messages.success(request, 'Booking created successfully.')
                     return HttpResponseRedirect(reverse('booking_list'))
                 else:
                     messages.error(request, 'No table available at this time')
                     print('error')
-            print(booking_date, len(booking_date))
+            print(table_booked, len(table_booked))
             # breakpoint()
             # available_tables = Table.objects.filter(
             #     number=table_for, available=True)
