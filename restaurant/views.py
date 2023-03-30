@@ -96,7 +96,6 @@ class BookingView(View):
         all_bookings = Booking.objects.all()
         bookings = Booking.objects.filter(account=self.request.user.id)
         print('bookings:', bookings)
-        # breakpoint()
         booking_form = BookingForm()
         return render(
             request,
@@ -123,12 +122,8 @@ class BookingCreate(View):
 
     def post(self, request, *args, **kwargs):
         form = BookingForm(request.POST)
-        Booking.account = self.request.user.id
         print(f'the user id is: {Booking.account}')
-        # user = self.request.user.id
         if form.is_valid():
-            # form.data['account'] = Booking.account
-            name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
@@ -141,9 +136,11 @@ class BookingCreate(View):
                 date=date, time=time, table_for=table_for)
             # if number of guests is 2 or 6
             if table_for != 4:
-                # if less than 5 bookings at this time and date, save the
-                # booking and redirect
+                # if less than 5 bookings at this time and date,
+                # add user id, save the booking and redirect
                 if len(table_booked) < 5:
+                    form = form.save(commit=False)
+                    form.account = request.user.id
                     form.save()
                     print(table_booked, len(table_booked))
                     messages.success(request, 'Booking created successfully.')
@@ -154,9 +151,11 @@ class BookingCreate(View):
                     print('error')
             # if number of guests is 4
             else:
-                # if less than 10 bookings at this time and date, save the
-                # booking and redirect
+                # if less than 10 bookings at this time and date,
+                # add user id, save the booking and redirect
                 if len(table_booked) < 3:
+                    form = form.save(commit=False)
+                    form.account = request.user.id
                     form.save()
                     print(table_booked, len(table_booked))
                     messages.success(request, 'Booking created successfully.')
