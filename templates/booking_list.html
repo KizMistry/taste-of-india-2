@@ -19,7 +19,7 @@
             <table>
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Date</th>
                         <th>Time</th>
@@ -28,11 +28,11 @@
                 <tbody>
                     {% for booking in bookings %}
                     <tr>
-                        <!-- <td>{{ booking.id },}</td> -->
+                        <td>{{ booking.id }}</td>
                         <td>{{ booking.name }}</td>
                         <td>{{ booking.date }}</td>
                         <td>{{ booking.time }}</td>
-                        <td><button><a href="#">Edit</a></button></td>
+                        <td><button name="{{ booking.id }}"><a href="{% url 'update_booking' booking_id=booking.id %}">Edit</a></button></td>
                         <td><button><a href="#">Delete</a></button></td>
                     </tr>
                     {% empty %}
