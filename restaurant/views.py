@@ -94,7 +94,7 @@ class BookingView(View):
 
     def get(self, request, *args, **kwargs):
         all_bookings = Booking.objects.all()
-        bookings = Booking.objects.filter(account=self.request.user.id)
+        bookings = Booking.objects.filter(account=self.request.user.id).order_by('date', 'time')
         booking_form = BookingForm()
         return render(
             request,
@@ -105,6 +105,14 @@ class BookingView(View):
                 'booking_form': BookingForm(),
             },
         )
+
+
+class BookingDelete(View):
+
+    def get(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id)
+        booking.delete()
+        return HttpResponseRedirect(reverse('booking_list'))
 
 
 class BookingCreate(View):
@@ -189,18 +197,19 @@ class BookingCreate(View):
 class BookingUpdate(View):
     def get(self, request, booking_id, *args, **kwargs):
         booking = get_object_or_404(Booking, id=booking_id)
-        booking_form = BookingForm()
+        booking_form = BookingForm(instance=booking)
         return render(
             request,
             'update_booking.html',
             {
                 'booking_id': booking_id,
-                'booking_form': BookingForm(instance=booking),
+                'booking_form': booking_form,
             },
         )
 
-    def post(self, request, *args, **kwargs):
-        form = BookingForm(request.POST)
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id)
+        form = BookingForm(request.POST, instance=booking)
         if form.is_valid():
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
