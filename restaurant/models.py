@@ -55,6 +55,9 @@ class Booking(models.Model):
         Notes: {self.notes}
         '''
 
+    class Meta:
+        ordering = ['-date', '-time']
+
 
 # class Booking(models.Model):
 #     name = models.CharField(max_length=100)
