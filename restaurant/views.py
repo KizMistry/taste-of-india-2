@@ -94,8 +94,10 @@ class BookingView(View):
 
     def get(self, request, *args, **kwargs):
         all_bookings = Booking.objects.all()
-        bookings = Booking.objects.filter(account=self.request.user.id).order_by('date', 'time')
+        bookings = Booking.objects.filter(
+            account=self.request.user.id).order_by('date', 'time')
         booking_form = BookingForm()
+        print(bookings[1])
         return render(
             request,
             'booking_list.html',

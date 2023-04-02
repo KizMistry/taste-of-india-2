@@ -17,16 +17,16 @@
             {% if user.is_authenticated %}
             <div id="deleteModal" class="modal-delete">
 
-                <div id="delete-confirmation{{ booking.id }}" class="modal-info">
-                    <span class="close-modal">&times;</span>
+                <div id="delete-confirmation" class="modal-info">
+                    <span id="close-modal" class="close-modal">&times;</span>
                     <h3>
                         Are you sure you want to <strong>delete</strong> this booking?
                     </h2>
-                    <p>
-                        Your booking for {{ booking.name }} at {{ booking.time }} on {{ booking.date }}, seating {{ booking.table_for }} will be cancelled.
+                    <p id="modal-p">
+                        
                     </p>
-                    <button class="keep-btn" name="keep"><a href=""></a>No! Keep my Booking</button>
-                    <button class="delete-btn btn-red" name="delete"><a href="{% url 'delete_booking' booking_id=booking.id %}">Delete</a></button>
+                    <button id="keep-btn" class="keep-btn" name="keep"></a>No! Keep my Booking</button>
+                    <button class="delete-btn btn-red" name="delete"><a id="delete-id" href="{,% url 'delete_booking' booking_id=booking,.id %}">Delete</a></button>
                 </div>
 
             </div>
@@ -34,26 +34,29 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Ref</th>
                         <th>Name</th>
                         <th>Date</th>
                         <th>Time</th>
+                        <th>Guests</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for booking in bookings %}
                     <tr>
-                        <td>{{ booking.id }}</td>
-                        <td>{{ booking.name }}</td>
-                        <td>{{ booking.date }}</td>
-                        <td>{{ booking.time }}</td>
+                        <td id="id{{ booking.id }}">{{ booking.id }}</td>
+                        <td id="name{{ booking.id }}">{{ booking.name }}</td>
+                        <td id="date{{ booking.id }}">{{ booking.date }}</td>
+                        <td id="time{{ booking.id }}">{{ booking.time }}</td>
+                        <td id="guests{{ booking.id }}">{{ booking.table_for }}</td>
                         <td><button name="update"><a href="{% url 'update_booking' booking_id=booking.id %}">Edit</a></button></td>
-                        <td><button id="deleteButton" class="delete-btn" name="delete">Delete</button></td>
+                        <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete">Delete</button></td>
                     </tr>
+                    {% comment %}
                     <div id="deleteModal" class="modal-delete">
 
                         <div id="delete-confirmation{{ booking.id }}" class="modal-info">
-                            <span class="close-modal">&times;</span>
+                            <span class="close-modal" name="close-modal">&times;</span>
                             <h3>
                                 Are you sure you want to <strong>delete</strong> this booking?
                             </h2>
@@ -63,13 +66,12 @@
                             <button class="keep-btn" name="keep"><a href=""></a>No! Keep my Booking</button>
                             <button class="delete-btn btn-red" name="delete"><a href="{% url 'delete_booking' booking_id=booking.id %}">Delete</a></button>
                         </div>
-        
                     </div>
+                    {% endcomment %}
                     {% empty %}
                     <tr>
                         <td colspan="3">You currently have no reservations</td>
                     </tr>
-                    <!-- <button><a href="create_booking.html">Make a Reservation</a></button> -->
                     {% endfor %}
                 </tbody>
             </table>
@@ -78,13 +80,6 @@
             {% else %}
             <h1>Please Login / Register to book a table</h1>
             {% endif %}
-            <!-- <h3>Book a Table:</h3>
-  <p>Table for: {{ user.username },}</p>
-  <form method="POST" style="margin-top: 1.3em;">
-      {{ booking_form | crispy },}
-      {% csrf_token %,}
-      <button type="submit" class="btn btn-signup btn-lg">Create Booking</button>
-  </form> -->
         </div>
     </div>
 </div>

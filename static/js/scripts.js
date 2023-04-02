@@ -10,26 +10,51 @@ window.addEventListener('DOMContentLoaded', event => {
 })
 
 
-let deleteModal = document.getElementById("deleteModal");
 let deleteButton = document.getElementById("deleteButton");
-let closeModal = document.getElementsByClassName('close-modal');
+let closeModal = document.getElementById("close-modal");
+const buttons = document.getElementsByClassName("open-modal");
 
-// Open the modal when how to play button clicked
+// Gets booking info of the selected row and fills the Modal info
+const buttonPressed = e => {
+    let id = e.target.id;
+    let name = document.getElementById("name"+id).innerHTML;
+    let date = document.getElementById("date"+id).innerHTML;
+    let time = document.getElementById("time"+id).innerHTML;
+    let guests = document.getElementById("guests"+id).innerHTML;
+    const modal = document.getElementById("deleteModal");
+    const modalp = document.getElementById("modal-p");
+    const keep = document.getElementById("keep-btn");
 
-deleteButton.onclick = function () {
-    deleteModal.style.display = "block";
-};
 
-// Close the modal when 'x' button is clicked
+    // Open the modal when any delete button is clicked
+    modal.style.display = "block";
 
-closeModal.onclick = function () {
-    deleteModal.style.display = "none";
-};
+    // Close the modal when 'x' button is clicked
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+    };
 
-// Modal closed when anywhere outside the modal is clicked
+    // Close the modal when 'No' button is clicked
+    keep.onclick = function () {
+        modal.style.display = "none";
+    };
 
-window.onclick = function (event) {
-    if (event.target == deleteModal) {
-        deleteModal.style.display = "none";
-    }
-};
+    // Modal closed when anywhere outside the modal is clicked
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // Modals Paragraph is updated with the booking details of the selected row
+    modalp.innerHTML = `Your booking for <strong>${name}</strong> at <strong>${time}</strong> on <strong>${date}</strong>, seating <strong>${guests}</strong> will be cancelled.`
+
+    console.log(name, date, time, guests);
+    console.log(e.target.id);  // Get ID of Clicked Element
+  }
+  
+  // Adds event listener to all delete buttons
+  for (let button of buttons) {
+    button.addEventListener("click", buttonPressed);
+  }
+
