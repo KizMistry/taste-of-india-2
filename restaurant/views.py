@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
+from datetime import datetime, date, timedelta
 from .models import Meal, Booking, Table
 from .forms import ReviewForm, BookingForm
 from django.http import HttpResponseRedirect
@@ -136,64 +137,86 @@ class BookingCreate(View):
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
             table_for = form.cleaned_data['table_for']
-            date = form.cleaned_data['date']
+            form_date = form.cleaned_data['date']
             time = form.cleaned_data['time']
-            # get all bookings from selected date
-            table_booked = Booking.objects.filter(
-                date=date, time=time, table_for=table_for)
-            # if number of guests is 2 or 6
-            if table_for != 4:
-                # if less than 5 bookings at this time and date,
-                # add user id, save the booking and redirect
-                if len(table_booked) < 5:
-                    form = form.save(commit=False)
-                    form.account = request.user.id
-                    form.save()
-                    print(table_booked, len(table_booked))
-                    messages.success(request, 'Booking created successfully.')
-                    return HttpResponseRedirect(reverse('booking_list'))
-                # if 5 bookings at chosen time and date, error message
-                else:
-                    messages.error(request, 'No table available at this time')
-                    print('error')
-            # if number of guests is 4
+            today = date.today()
+            day_limit = today + timedelta(days=90)
+            print('date is', form_date)
+            print('today var is', day_limit)
+            # checks if selected date is valid
+            if ((form_date < today) or (form_date > day_limit)):
+                messages.error(request, '''
+                Sorry, Bookings can only be made
+                within the next 90 days.''')
+                print('error')
+                return render(
+                    request,
+                    'create_booking.html',
+                    {
+                        'booking_form': BookingForm()
+                        },
+                        )
             else:
-                # if less than 10 bookings at this time and date,
-                # add user id, save the booking and redirect
-                if len(table_booked) < 3:
-                    form = form.save(commit=False)
-                    form.account = request.user.id
-                    form.save()
-                    print(table_booked, len(table_booked))
-                    messages.success(request, 'Booking created successfully.')
-                    return HttpResponseRedirect(reverse('booking_list'))
+                # get all bookings from selected date
+                table_booked = Booking.objects.filter(
+                    date=form_date, time=time, table_for=table_for)
+                # if number of guests is 2 or 6
+                if table_for != 4:
+                    # if less than 5 bookings at this time and date,
+                    # add user id, save the booking and redirect
+                    if len(table_booked) < 5:
+                        form = form.save(commit=False)
+                        form.account = request.user.id
+                        form.save()
+                        print(table_booked, len(table_booked))
+                        messages.success(
+                            request, 'Booking created successfully.')
+                        return HttpResponseRedirect(reverse('booking_list'))
+                    # if 5 bookings at chosen time and date, error message
+                    else:
+                        messages.error(
+                            request, 'No table available at this time')
+                        print('error')
+                # if number of guests is 4
                 else:
-                    messages.error(request, 'No table available at this time')
-                    print('error')
-            print(table_booked, len(table_booked))
-            # available_tables = Table.objects.filter(
-            #     number=table_for, available=True)
-            # if len(available_tables) > 0:
-            #     table = available_tables[0]
-            #     table.available = False
-            #     table.save()
-            #     form.save()
-            #     messages.success(request, 'Booking created successfully.')
-            #     return HttpResponseRedirect(reverse('booking_list'))
+                    # if less than 10 bookings at this time and date,
+                    # add user id, save the booking and redirect
+                    if len(table_booked) < 10:
+                        form = form.save(commit=False)
+                        form.account = request.user.id
+                        form.save()
+                        print(table_booked, len(table_booked))
+                        messages.success(
+                            request, 'Booking created successfully.')
+                        return HttpResponseRedirect(reverse('booking_list'))
+                    else:
+                        messages.error(
+                            request, 'No table available at this time')
+                        print('error')
+                print(table_booked, len(table_booked))
+                # available_tables = Table.objects.filter(
+                #     number=table_for, available=True)
+                # if len(available_tables) > 0:
+                #     table = available_tables[0]
+                #     table.available = False
+                #     table.save()
+                #     form.save()
+                #     messages.success(request, 'Booking created successfully.')
+                #     return HttpResponseRedirect(reverse('booking_list'))
+                # else:
+                #     messages.error(request, 'No table available at this time')
+                #     print('error')
+            # if form is not valid, error message
             # else:
-            #     messages.error(request, 'No table available at this time')
+            #     messages.error(request, 'Information entered is invalid')
             #     print('error')
-        # if form is not valid, error message
-        else:
-            messages.error(request, 'Information entered is invalid')
-            print('error')
-        return render(
-            request,
-            'create_booking.html',
-            {
-                'booking_form': BookingForm()
-            },
-        )
+            # return render(
+            #     request,
+            #     'create_booking.html',
+            #     {
+            #         'booking_form': BookingForm()
+            #     },
+            # )
 
 
 class BookingUpdate(View):
@@ -217,45 +240,64 @@ class BookingUpdate(View):
             phone = form.cleaned_data['phone']
             notes = form.cleaned_data['notes']
             table_for = form.cleaned_data['table_for']
-            date = form.cleaned_data['date']
+            form_date = form.cleaned_data['date']
             time = form.cleaned_data['time']
-            print(date, time, table_for)
-            # get all bookings from selected date
-            table_booked = Booking.objects.filter(
-                date=date, time=time, table_for=table_for)
-            # if number of guests is 2 or 6
-            if table_for != 4:
-                # if less than 5 bookings at this time and date,
-                # add user id, save the booking and redirect
-                if len(table_booked) < 5:
-                    form = form.save(commit=False)
-                    form.account = request.user.id
-                    form.save()
-                    print(table_booked, len(table_booked))
-                    messages.success(request, 'Booking created successfully.')
-                    return HttpResponseRedirect(reverse('booking_list'))
-                # if 5 bookings at chosen time and date, error message
-                else:
-                    messages.error(request, 'No table available at this time')
-                    print('error')
-            # if number of guests is 4
+            today = date.today()
+            day_limit = today + timedelta(days=90)
+            print('date is', form_date)
+            print('today var is', day_limit)
+            # checks if selected date is valid
+            if ((form_date < today) or (form_date > day_limit)):
+                messages.error(request, '''
+                Sorry, Bookings can only be made
+                within the next 90 days.''')
+                print('error')
+                return render(
+                    request,
+                    'update_booking.html',
+                    {
+                        'booking_id': booking_id,
+                        'booking_form': form,
+                        },
+                        )
             else:
-                # if less than 10 bookings at this time and date,
-                # add user id, save the booking and redirect
-                if len(table_booked) < 3:
-                    form = form.save(commit=False)
-                    form.account = request.user.id
-                    form.save()
-                    print(table_booked, len(table_booked))
-                    messages.success(request, 'Booking created successfully.')
-                    return HttpResponseRedirect(reverse('booking_list'))
+                # get all bookings from selected date
+                table_booked = Booking.objects.filter(
+                    date=form_date, time=time, table_for=table_for)
+                # if number of guests is 2 or 6
+                if table_for != 4:
+                    # if less than 5 bookings at this time and date,
+                    # add user id, save the booking and redirect
+                    if len(table_booked) < 5:
+                        form = form.save(commit=False)
+                        form.account = request.user.id
+                        form.save()
+                        print(table_booked, len(table_booked))
+                        messages.success(
+                            request, 'Booking created successfully.')
+                        return HttpResponseRedirect(reverse('booking_list'))
+                    # if 5 bookings at chosen time and date, error message
+                    else:
+                        messages.error(
+                            request, 'No table available at this time')
+                        print('error')
+                # if number of guests is 4
                 else:
-                    messages.error(request, 'No table available at this time')
-                    print('error')
-            print(table_booked, len(table_booked))
-        else:
-            messages.error(request, 'Information entered is invalid')
-            print('error')
+                    # if less than 10 bookings at this time and date,
+                    # add user id, save the booking and redirect
+                    if len(table_booked) < 10:
+                        form = form.save(commit=False)
+                        form.account = request.user.id
+                        form.save()
+                        print(table_booked, len(table_booked))
+                        messages.success(
+                            request, 'Booking created successfully.')
+                        return HttpResponseRedirect(reverse('booking_list'))
+                    else:
+                        messages.error(
+                            request, 'No table available at this time')
+                        print('error')
+                print(table_booked, len(table_booked))
         return render(
             request,
             'update_booking.html',
