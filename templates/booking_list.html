@@ -51,10 +51,7 @@
                         <td id="date{{ booking.id }}">{{ booking.date }}</td>
                         <td class="active-row" id="time{{ booking.id }}">{{ booking.time }}</td>
                         <td id="guests{{ booking.id }}">{{ booking.table_for }}</td>
-                        <td class="active-row"><a href="{% url 'update_booking' booking_id=booking.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                        {% comment %}
-                        <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete">Delete</button></td>
-                        {% endcomment %}
+                        <td class="active-row"><a href="{% url 'update_booking' booking_id=booking.id %}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                         <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete"><i class="fa-solid fa-trash"></i></button></td>
 
                     </tr>

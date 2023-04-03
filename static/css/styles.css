@@ -13,7 +13,8 @@
 
 /* Custom CSS */
 
-.open-modal {
+.open-modal,
+.fa-pen-to-square {
   background-color: transparent;
   border: none;
   color: rgb(30, 48, 80);
@@ -24,7 +25,7 @@
 
 .reservation-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: auto;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
