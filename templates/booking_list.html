@@ -26,31 +26,37 @@
                         
                     </p>
                     <button id="keep-btn" class="keep-btn" name="keep"></a>No! Keep my Booking</button>
-                    <button class="delete-btn btn-red" name="delete"><a id="delete-id" href="{,% url 'delete_booking' booking_id=booking,.id %}">Delete</a></button>
+                    <button class="delete-btn btn-red" name="delete"><a id="delete-id" href="#">Delete</a></button>
                 </div>
 
             </div>
             <h1>Your Reservations</h1>
-            <table>
+            <table class="reservation-table">
                 <thead>
                     <tr>
-                        <th>Ref</th>
+                        <th>Ref#</th>
                         <th>Name</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Guests</th>
+                        <th>Edit</th>
+                        <th>Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for booking in bookings %}
                     <tr>
                         <td id="id{{ booking.id }}">{{ booking.id }}</td>
-                        <td id="name{{ booking.id }}">{{ booking.name }}</td>
+                        <td class="active-row" id="name{{ booking.id }}">{{ booking.name }}</td>
                         <td id="date{{ booking.id }}">{{ booking.date }}</td>
-                        <td id="time{{ booking.id }}">{{ booking.time }}</td>
+                        <td class="active-row" id="time{{ booking.id }}">{{ booking.time }}</td>
                         <td id="guests{{ booking.id }}">{{ booking.table_for }}</td>
-                        <td><button name="update"><a href="{% url 'update_booking' booking_id=booking.id %}">Edit</a></button></td>
+                        <td class="active-row"><a href="{% url 'update_booking' booking_id=booking.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                        {% comment %}
                         <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete">Delete</button></td>
+                        {% endcomment %}
+                        <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete"><i class="fa-solid fa-trash"></i></button></td>
+
                     </tr>
                     {% comment %}
                     <div id="deleteModal" class="modal-delete">

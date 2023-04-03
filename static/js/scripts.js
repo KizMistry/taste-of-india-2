@@ -21,7 +21,6 @@ const buttonPressed = e => {
     let date = document.getElementById("date"+id).innerHTML;
     let time = document.getElementById("time"+id).innerHTML;
     let guests = document.getElementById("guests"+id).innerHTML;
-    let deleteBooking = document.getElementById("delete-id");
     const modal = document.getElementById("deleteModal");
     const modalp = document.getElementById("modal-p");
     const keep = document.getElementById("keep-btn");
