@@ -194,29 +194,6 @@ class BookingCreate(View):
                             request, 'No table available at this time')
                         print('error')
                 print(table_booked, len(table_booked))
-                # available_tables = Table.objects.filter(
-                #     number=table_for, available=True)
-                # if len(available_tables) > 0:
-                #     table = available_tables[0]
-                #     table.available = False
-                #     table.save()
-                #     form.save()
-                #     messages.success(request, 'Booking created successfully.')
-                #     return HttpResponseRedirect(reverse('booking_list'))
-                # else:
-                #     messages.error(request, 'No table available at this time')
-                #     print('error')
-            # if form is not valid, error message
-            # else:
-            #     messages.error(request, 'Information entered is invalid')
-            #     print('error')
-            # return render(
-            #     request,
-            #     'create_booking.html',
-            #     {
-            #         'booking_form': BookingForm()
-            #     },
-            # )
 
 
 class BookingUpdate(View):

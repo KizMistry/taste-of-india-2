@@ -21,6 +21,7 @@ const buttonPressed = e => {
     let date = document.getElementById("date"+id).innerHTML;
     let time = document.getElementById("time"+id).innerHTML;
     let guests = document.getElementById("guests"+id).innerHTML;
+    let deleteBooking = document.getElementById("delete-id");
     const modal = document.getElementById("deleteModal");
     const modalp = document.getElementById("modal-p");
     const keep = document.getElementById("keep-btn");
@@ -28,6 +29,9 @@ const buttonPressed = e => {
 
     // Open the modal when any delete button is clicked
     modal.style.display = "block";
+
+    // Changes the Delete buttons url to delete selected booking id
+    document.getElementById("delete-id").href=`/delete_booking/${id}`
 
     // Close the modal when 'x' button is clicked
     closeModal.onclick = function () {
