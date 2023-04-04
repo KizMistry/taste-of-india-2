@@ -23,11 +23,26 @@ class Nav(View):
         return render(request, 'meal.html')
 
 
-class PostList(generic.ListView):
-    model = Meal
-    queryset = Meal.objects.filter(status=1).order_by('created_on')
-    template_name = 'meal.html'
-    paginate_by = 6
+# class PostList(generic.ListView):
+#     model = Meal
+#     queryset = Meal.objects.filter(status=1).order_by('created_on')
+#     template_name = 'meal.html'
+#     paginate_by = 6
+
+
+class MealList(View):
+
+    def get(self, request, *args, **kwargs):
+        model = Meal
+        meals = Meal.objects.filter(status=1).order_by('created_on')
+        paginate_by = 6
+        return render(
+            request,
+            'meal.html',
+            {
+                'meals': meals,
+            },
+        )
 
 
 class MealDetail(View):
@@ -97,7 +112,6 @@ class MealLike(View):
 class BookingView(View):
 
     def get(self, request, *args, **kwargs):
-        all_bookings = Booking.objects.all()
         bookings = Booking.objects.filter(
             account=self.request.user.id).order_by('date', 'time')
         booking_form = BookingForm()
@@ -106,7 +120,6 @@ class BookingView(View):
             request,
             'booking_list.html',
             {
-                'all_bookings': all_bookings,
                 'bookings': bookings,
                 'booking_form': BookingForm(),
             },

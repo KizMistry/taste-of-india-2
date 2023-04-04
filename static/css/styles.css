@@ -13,6 +13,22 @@
 
 /* Custom CSS */
 
+.card-img-top {
+  height:300px
+}
+
+.meal-h1 {
+  background-color: rgba(245, 126, 39, 0.90);
+  text-align: center;
+}
+.post-link{
+  color: black;
+  text-decoration: none;
+}
+
+.post-link:hover {
+  color: whitesmoke;
+}
 
 #pdf {
   display: inline-block;
@@ -4742,7 +4758,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: rgba(245, 126, 39, 0.90);
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -8000,7 +8016,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: black !important;
 }
 
 .text-black-50 {

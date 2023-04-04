@@ -33,7 +33,7 @@
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'home' %}">Home</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% static 'assets/pdf/taste-of-india-menu.pdf' %}" target="_blank">Menu <p id="pdf">(pdf)</p></a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'booking_list' %}">Book</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'booking_list' %}">Bookings</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'meal' %}">Meals</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'about' %}">About</a></li>
                         {% if user.is_authenticated %}
