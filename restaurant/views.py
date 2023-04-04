@@ -13,6 +13,9 @@ from django.http import HttpResponseRedirect
 
 class Nav(View):
 
+    def home(request):
+        return render(request, 'index.html')
+
     def about(request):
         return render(request, 'about.html')
 
@@ -23,7 +26,7 @@ class Nav(View):
 class PostList(generic.ListView):
     model = Meal
     queryset = Meal.objects.filter(status=1).order_by('created_on')
-    template_name = 'index.html'
+    template_name = 'meal.html'
     paginate_by = 6
 
 
