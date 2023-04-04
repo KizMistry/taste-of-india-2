@@ -13,6 +13,22 @@
 
 /* Custom CSS */
 
+#create-btn {
+  margin: 10px;
+  background-color: #800000;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#create-btn a {
+  text-decoration: none;
+}
+
+#create-btn a:hover {
+  color: #ffd700
+}
+
 .open-modal,
 .fa-pen-to-square {
   background-color: transparent;
@@ -29,7 +45,7 @@
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
-  box-shadow: 0 0 20px rgb(255 255 255 / 15%);
+  box-shadow: 0 0 20px rgb(255 255 255 / 20%);
 }
 
 .reservation-table thead tr {
@@ -52,7 +68,7 @@
 }
 
 .reservation-table tbody tr:last-of-type {
-  border-bottom: 2px solid #d84242;
+  border-bottom: 2px solid #a02c2c;
 }
 
 .reservation-table tbody tr.active-row {
