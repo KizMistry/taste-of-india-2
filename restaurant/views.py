@@ -115,7 +115,6 @@ class BookingView(View):
         bookings = Booking.objects.filter(
             account=self.request.user.id).order_by('date', 'time')
         booking_form = BookingForm()
-        print(bookings[1])
         return render(
             request,
             'booking_list.html',
@@ -157,8 +156,6 @@ class BookingCreate(View):
             time = form.cleaned_data['time']
             today = date.today()
             day_limit = today + timedelta(days=90)
-            print('date is', form_date)
-            print('today var is', day_limit)
             # checks if selected date is valid
             if ((form_date < today) or (form_date > day_limit)):
                 messages.error(request, '''
@@ -184,7 +181,6 @@ class BookingCreate(View):
                         form = form.save(commit=False)
                         form.account = request.user.id
                         form.save()
-                        print(table_booked, len(table_booked))
                         messages.success(
                             request, 'Booking created successfully.')
                         return HttpResponseRedirect(reverse('booking_list'))
@@ -201,7 +197,6 @@ class BookingCreate(View):
                         form = form.save(commit=False)
                         form.account = request.user.id
                         form.save()
-                        print(table_booked, len(table_booked))
                         messages.success(
                             request, 'Booking created successfully.')
                         return HttpResponseRedirect(reverse('booking_list'))
@@ -209,7 +204,6 @@ class BookingCreate(View):
                         messages.error(
                             request, 'No table available at this time')
                         print('error')
-                print(table_booked, len(table_booked))
 
 
 class BookingUpdate(View):
@@ -237,8 +231,6 @@ class BookingUpdate(View):
             time = form.cleaned_data['time']
             today = date.today()
             day_limit = today + timedelta(days=90)
-            print('date is', form_date)
-            print('today var is', day_limit)
             # checks if selected date is valid
             if ((form_date < today) or (form_date > day_limit)):
                 messages.error(request, '''
@@ -265,7 +257,6 @@ class BookingUpdate(View):
                         form = form.save(commit=False)
                         form.account = request.user.id
                         form.save()
-                        print(table_booked, len(table_booked))
                         messages.success(
                             request, 'Booking created successfully.')
                         return HttpResponseRedirect(reverse('booking_list'))
@@ -282,7 +273,6 @@ class BookingUpdate(View):
                         form = form.save(commit=False)
                         form.account = request.user.id
                         form.save()
-                        print(table_booked, len(table_booked))
                         messages.success(
                             request, 'Booking created successfully.')
                         return HttpResponseRedirect(reverse('booking_list'))
@@ -290,7 +280,6 @@ class BookingUpdate(View):
                         messages.error(
                             request, 'No table available at this time')
                         print('error')
-                print(table_booked, len(table_booked))
         return render(
             request,
             'update_booking.html',
