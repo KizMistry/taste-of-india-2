@@ -93,38 +93,41 @@ Yoga Utopia aims to leave people feeling stronger, healthier and happier.
 
 - __Available Booking Slots__
 
-  - Tutorial content for the Yoga page. The content will contain a step-by-step guide to a variety of yoga stretches and corresponding images/videos to provide a visual and/or audible example.
-  - This will provide the user with much more accessible content on the yoga page they can follow along with.
+  - Only show available time slots for selected date on the booking form.
+  - This will eliminate the option a user has to try and book an unavailable time slot.
 
-- __Meditation Page Techniques__
+- __Filter Meals__
 
-  - Technique content for the Meditation page. The content will contain a variety of meditation techniques and corresponding images/videos to provide a visual and/or audible aid.
-  - This will provide the user with much more accessible content on the meditation page that they can follow along with.
+  - User can filter the Meal posts by the meals they have liked.
+  - User can filter the Meal posts the meal type (Starter, Main, Side Dish, Dessert, Drink).
 
-- __Mental Health Page Advice__
+- __Take Bookings From Unregistered Users__
 
-  - Self-improvement content for the Mental Health page. The content will contain more well-being advice and steps that can be taken to improve their mentality. 
-  - This will provide the user with much more accessible and useful content on the mental-health page.
+  - Give unregistered users the ability use the booking system
+
+- __Booking Confirmations__
+
+  - Send an email confirmation of booking details on submission of a successful booking.
 
 ## Testing 
 
-The Rock-Paper-Scissors_Lizard-Rock site and game all work as intended.
+The Taste of India site works as intended.
 All sections were tested; Some of the main testing points included:
 
 | Test       | Expected           | Passed  |
 | :------------- |:-------------:| :-----:|
-| User clicks 'How To Play' button      | Modal opens | ✅ |
-| User clicks 'x' button in the modal      | Modal closes | ✅ |
+| User clicks all navigation links on home page     | Taken to corresponding page | ✅ |
+| User clicks 'Menu(pdf)' button      | Opens new tab with a PDF of the Menu | ✅ |
 | User clicks outside modal area (while modal is open)| Modal closes | ✅ |
 | User clicks 'Play' button before selecting hand     | An alert appears telling the user to select a hand      |   ✅ |
 | User clicks any of the hand buttons | Border turns green and their hand displays in the users pick area       | ✅ |
 | User clicks 'Play' button after selecting hand | Game runs, random hand generated and displayed,<br> correct results message displays and scores updated | ✅  |
 | User clicks 'Reset' button | An alert appears and the scores, user pick, computer pick,<br> results message, and hand selections are reset to defualt | ✅  |
-| Responsiveness of each screen size  | Each section and button adjusted size to fit all device displays |  :x: |
+| Responsiveness of each screen size  | Each section and button adjusted size to fit all device displays |  ❌ |
 
+- The table on the Bookings page is not yet responsive to smaller screens
 
-
-The website was shared with family and friends to test the websites usage and no problems/issues were mentioned in their feedback.
+The website was shared with family and friends to test the websites usage.
 
 ### Validator Testing 
 
@@ -132,11 +135,15 @@ The website was shared with family and friends to test the websites usage and no
   - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2F8000-kizmistry-tasteofindia2-q9ygssujmqb.ws-eu93.gitpod.io%2Fbooking_list.html%2F)
 - CSS
   - No errors were found when passing through the official [(Jigsaw) validator](http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2F8000-kizmistry-tasteofindia2-q9ygssujmqb.ws-eu93.gitpod.io%2F&usermedium=all&vextwarning=&warning=1)
-
+- JS
+  - No errors were found when passing script.js and map.js through JSHint
 
 ### Unfixed Bugs
 
-There is a minor bug with the delete icons on the bookings page: there is no response when clicking directly on the 'trash' icon.
+- There is a minor bug with the delete icons on the bookings page: there is no response when clicking directly on the 'trash' icon.
+- Amend url paths
+
+
 
 ## Deployment
 

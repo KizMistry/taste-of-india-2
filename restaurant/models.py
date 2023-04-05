@@ -40,7 +40,6 @@ class Booking(models.Model):
     phone = models.CharField(max_length=12, default='')
     date = models.DateField()
     time = models.TimeField(default=time(12, 12))
-    # tables = models.ManyToManyField(Table)
     table_for = models.IntegerField(choices=SEATING_CHOICES, default=2)
     notes = models.TextField(blank=True)
 
@@ -57,19 +56,6 @@ class Booking(models.Model):
 
     class Meta:
         ordering = ['-date', '-time']
-
-
-# class Booking(models.Model):
-#     name = models.CharField(max_length=100)
-#     email = models.EmailField()
-#     guests = models.IntegerField(choices=GUESTS, default=2)
-#     day = models.DateField()
-#     time = models.CharField(max_length=20, choices=TIMES, default="6:00 PM")
-#     user = models.ForeignKey(
-#         User, on_delete=models.CASCADE, related_name="bookings")
-
-#     def __str__(self):
-#         return f"{self.name} | day: {self.day} | time: {self.time}"
 
 
 class Meal(models.Model):
