@@ -7,10 +7,9 @@
 window.addEventListener('DOMContentLoaded', event => {
     const listHoursArray = document.body.querySelectorAll('.list-hours li');
     listHoursArray[new Date().getDay()].classList.add(('today'));
-})
+});
 
 
-let deleteButton = document.getElementById("deleteButton");
 let closeModal = document.getElementById("close-modal");
 const buttons = document.getElementsByClassName("open-modal");
 
@@ -30,7 +29,7 @@ const buttonPressed = e => {
     modal.style.display = "block";
 
     // Changes the Delete buttons url to delete selected booking id
-    document.getElementById("delete-id").href=`/delete_booking/${id}`
+    document.getElementById("delete-id").href=`/delete_booking/${id}`;
 
     // Close the modal when 'x' button is clicked
     closeModal.onclick = function () {
@@ -50,11 +49,11 @@ const buttonPressed = e => {
     };
 
     // Modals Paragraph is updated with the booking details of the selected row
-    modalp.innerHTML = `Your booking for <strong>${name}</strong> at <strong>${time}</strong> on <strong>${date}</strong>, seating <strong>${guests}</strong> will be cancelled.`
+    modalp.innerHTML = `Your booking for <strong>${name}</strong> at <strong>${time}</strong> on <strong>${date}</strong>, seating <strong>${guests}</strong> will be cancelled.`;
 
     console.log(name, date, time, guests);
     console.log(e.target.id);  // Get ID of Clicked Element
-  }
+  };
   
   // Adds event listener to all delete buttons
   for (let button of buttons) {
