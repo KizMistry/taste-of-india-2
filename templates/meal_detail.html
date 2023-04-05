@@ -18,7 +18,7 @@
                 {% if "placeholder" in meal.featured_image.url %}
                 <img src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg" width="100%">
                 {% else %}
-                <img src="{{ meal.featured_image.url }}" width="100%">
+                <img src="{{ meal.featured_image.url }}" width="100%" alt="picture of {{ meal.meal_name }}">
                 {% endif %}
             </div>
         </div>

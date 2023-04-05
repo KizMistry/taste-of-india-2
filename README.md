@@ -1,108 +1,164 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Taste of India
+ 
+Yoga Utopia is a Yoga, Meditation and Mental-Health website that hopes to provide a universal yoga experience, encouraging both a healthy mind and a healthy body for everyone. Yoga Utopia's goal is to teach visitors the origins and benefits of practicing Yoga, Meditation and the importance of Mental Well-being.
 
-Welcome KizMistry,
+Yoga Utopia provides beginner-friendly content which is also beneficial to a more experienced Yogi.
+The site has useful information relating to Yoga, Meditation, and Mental-Health that will help educate people interested in each category.
+Yoga Utopia aims to leave people feeling stronger, healthier and happier.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Taste of India](/assets/readme-media/Yoga-Utopia_index.html.png)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## Features 
 
-## Gitpod Reminders
+### Existing Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- __Navigation Bar__
 
-`python3 -m http.server`
+  - Featured on all four pages, the full responsive navigation bar includes links to the Logo/Name, Home, Yoga, Meditation, Mental-Health page and Sign Up section located on the Home page and is identical in each page to allow for easy navigation.
+  - The navigation bar is responsive and will collapse into a hamburger menu when used on medium and small screens.
+  - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
 
-A blue button should appear to click: _Make Public_,
+![Nav Bar](/assets/readme-media/navigation-bar.png)
 
-Another blue button should appear to click: _Open Browser_.
+- __The Landing Page Image__
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+  - The landing page has a photograph with text overlay welcoming the user and informing them Yoga Utopia's goal. 
+  - This section introduces the user to Yoga Utopia with a vibrant image to not only grab their attention but also suggestive towards the capabilities of what can be achieved with Yoga Utopia.
 
-A blue button should appear to click: _Make Public_,
+![Landing Page](/assets/readme-media/landing-page.png)
 
-Another blue button should appear to click: _Open Browser_.
+- __What We Offer Section__
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+  - The what we offer section is an informative section that tells the user what can be found on each of the Yoga, Meditation and Mental-Health pages.
+  - The user will be advised early as to what is available to them on Yoga Utopia and can make an informed decision as to what page they'd like to visit.
 
-To log into the Heroku toolbelt CLI:
+![What We Offer](/assets/readme-media/what-we-offer.png)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- __About Us Section__
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+  - The about us section gives a more detailed overview to Yoga Utopia's goals, offerings, and benefits. 
+  - This will give the user more of an insight to Yoga Utopia and will help make them feel more comfortable with the content available/provided to them. 
 
-------
+![About Us](/assets/readme-media/about-us.png)
 
-## Release History
+- __Sign Up Section__
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+  - This section will allow the user to subscribe to Yoga Utopia's emailed newsletters that will be sent to the user on a weekly basis. The user will be asked to submit their full name and email address.
+  - The newsletter will contain all the up-to date news around the yoga community, provide fresh content weekly, available offers, and the latest Yoga Utopia news.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+![Register / Login](/assets/readme-media/sign-up.png)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+- __Contact Section__
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+  - The contact section includes Yoga Utopia's location, phone, and email details.
+  - The details are made available to the user for any queries they may have for Yoga Utopia and would like a form of contact. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![Contact](/assets/readme-media/contact.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- __The Footer__ 
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+  - The footer section includes links to the relevant social media sites for Yoga Utopia. The links will open to a new tab to allow easy navigation for the user.
+  - The footer is valuable to the user as it encourages them to stay connected via social media
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+![Footer](/assets/readme-media/footer.png)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- __Menu__
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+  - The Yoga page contains an indepth description of Yoga, its history and the benefits it provides.
+  - The page also includes a Yoga for beginners YouTube video that can be played.
+  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
+  - This will provide the user with educational information about yoga and also provide visual and audible content they can watch and/or listen to while they practice yoga. 
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+![Menu](/assets/readme-media/yoga-page.png)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- __Bookings Page__
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+  - The Meditation page contains an indepth description of Meditation, its history and the benefits it provides.
+  - The page also includes a Meditation for beginners YouTube video that can be played.
+  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
+  - This will provide the user with educational information about meditation and also provide visual and audible content they can watch and/or listen to while they practice meditation. 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![Bookings](/assets/readme-media/meditation-page.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- __Meals Page__
 
-------
+  - The Mental-Health page contains an indepth definition of Mental Well-being, educational description, it's science, the benefits it provides and the signs of mental-health problems.
+  - The page also includes a Mental-Health self-improvement YouTube video that can be played.
+  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
+  - This will provide the user with educational information about mental-health and well-being and also provide visual and audible content they can watch and/or listen to while they practice the techniques in the YouTube video.  
 
-## FAQ about the uptime script
+![Meals](/assets/readme-media/mental-health-page.png)
 
-**Why have you added this script?**
+### Future Feature Ideas
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- __Available Booking Slots__
 
-**How will this affect me?**
+  - Tutorial content for the Yoga page. The content will contain a step-by-step guide to a variety of yoga stretches and corresponding images/videos to provide a visual and/or audible example.
+  - This will provide the user with much more accessible content on the yoga page they can follow along with.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- __Meditation Page Techniques__
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+  - Technique content for the Meditation page. The content will contain a variety of meditation techniques and corresponding images/videos to provide a visual and/or audible aid.
+  - This will provide the user with much more accessible content on the meditation page that they can follow along with.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+- __Mental Health Page Advice__
 
-**So….?**
+  - Self-improvement content for the Mental Health page. The content will contain more well-being advice and steps that can be taken to improve their mentality. 
+  - This will provide the user with much more accessible and useful content on the mental-health page.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+## Testing 
 
-**Can I opt out?**
+The Rock-Paper-Scissors_Lizard-Rock site and game all work as intended.
+All sections were tested; Some of the main testing points included:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+| Test       | Expected           | Passed  |
+| :------------- |:-------------:| :-----:|
+| User clicks 'How To Play' button      | Modal opens | ✅ |
+| User clicks 'x' button in the modal      | Modal closes | ✅ |
+| User clicks outside modal area (while modal is open)| Modal closes | ✅ |
+| User clicks 'Play' button before selecting hand     | An alert appears telling the user to select a hand      |   ✅ |
+| User clicks any of the hand buttons | Border turns green and their hand displays in the users pick area       | ✅ |
+| User clicks 'Play' button after selecting hand | Game runs, random hand generated and displayed,<br> correct results message displays and scores updated | ✅  |
+| User clicks 'Reset' button | An alert appears and the scores, user pick, computer pick,<br> results message, and hand selections are reset to defualt | ✅  |
+| Responsiveness of each screen size  | Each section and button adjusted size to fit all device displays |  :x: |
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
 
-**Anything more?**
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+The website was shared with family and friends to test the websites usage and no problems/issues were mentioned in their feedback.
 
----
+### Validator Testing 
 
-Happy coding!
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2F8000-kizmistry-tasteofindia2-q9ygssujmqb.ws-eu93.gitpod.io%2Fbooking_list.html%2F)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2F8000-kizmistry-tasteofindia2-q9ygssujmqb.ws-eu93.gitpod.io%2F&usermedium=all&vextwarning=&warning=1)
+
+
+### Unfixed Bugs
+
+There is a minor bug with the delete icons on the bookings page: there is no response when clicking directly on the 'trash' icon.
+
+## Deployment
+
+The process of deploying Yoga Utopia to GitHub is detailed below: 
+
+- The site was deployed to GitHub pages. The steps to deploy are as follows: 
+  - In the GitHub repository, navigate to the Settings tab 
+  - Navigate to the 'Build and Deployment' section
+  - In the Source drop-down menu, select Deploy from a branch
+  - In the Branch drop-down menu, select 'main' branch and '/(root)' folder and click the save button
+  - Once saved, refresh the page. The page will reload with a detailed ribbon display to indicate the successful deployment. 
+
+The live link can be found here - https://kizmistry.github.io/Yoga-Utopia/
+
+
+## Credits 
+
+### Content 
+
+- All icons used are from [Font Awesome](https://fontawesome.com/)
+
+### Media
+
+- All images used are from [Pexels](https://www.pexels.com)
+
