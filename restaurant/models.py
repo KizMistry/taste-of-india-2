@@ -88,7 +88,7 @@ class Review(models.Model):
         Meal, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    body = models.TextField()
+    body = models.TextField('Your Review:')
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=0)
 

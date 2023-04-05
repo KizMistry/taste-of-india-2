@@ -7,6 +7,7 @@ from datetime import datetime, date, timedelta
 from .models import Meal, Booking, Table
 from .forms import ReviewForm, BookingForm
 from django.http import HttpResponseRedirect
+from . import creds
 
 
 # Create your views here.
@@ -17,7 +18,7 @@ class Nav(View):
         return render(request, 'index.html')
 
     def about(request):
-        return render(request, 'about.html')
+        return render(request, 'about.html', {'api_key': creds.api_key, })
 
     def meals(request):
         return render(request, 'meal.html')
