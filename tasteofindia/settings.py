@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 
 if os.path.isfile("env.py"):
     import env
@@ -32,7 +33,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['taste-of-india.herokuapp.com', 'localhost', 'https://taste-of-india.herokuapp.com/']
+ALLOWED_HOSTS = [
+    'taste-of-india.herokuapp.com',
+    'localhost',
+    'https://taste-of-india.herokuapp.com/'
+    ]
 
 
 # Application definition
@@ -54,6 +59,14 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'restaurant',
 ]
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+}
 
 SITE_ID = 1
 

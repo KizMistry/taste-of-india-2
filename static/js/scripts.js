@@ -60,3 +60,9 @@ const buttonPressed = e => {
     button.addEventListener("click", buttonPressed);
   }
 
+  // Time limit for messages
+  setTimeout(function() {
+    let messages = document.getElementById("msg");
+    let alert = new bootstrap.Alert(messages);
+    alert.close();
+}, 3000);

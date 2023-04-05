@@ -23,13 +23,6 @@ class Nav(View):
         return render(request, 'meal.html')
 
 
-# class PostList(generic.ListView):
-#     model = Meal
-#     queryset = Meal.objects.filter(status=1).order_by('created_on')
-#     template_name = 'meal.html'
-#     paginate_by = 6
-
-
 class MealList(View):
 
     def get(self, request, *args, **kwargs):
@@ -130,6 +123,7 @@ class BookingDelete(View):
     def get(self, request, booking_id, *args, **kwargs):
         booking = get_object_or_404(Booking, id=booking_id)
         booking.delete()
+        messages.info(request, 'Your booking has been cancelled')
         return HttpResponseRedirect(reverse('booking_list'))
 
 
@@ -182,12 +176,13 @@ class BookingCreate(View):
                         form.account = request.user.id
                         form.save()
                         messages.success(
-                            request, 'Booking created successfully.')
+                            request, 'Booking created successfully')
                         return HttpResponseRedirect(reverse('booking_list'))
                     # if 5 bookings at chosen time and date, error message
                     else:
                         messages.error(
-                            request, 'No table available at this time')
+                            request,
+                            'Sorry, No tables are available at this time')
                         print('error')
                 # if number of guests is 4
                 else:
@@ -198,11 +193,12 @@ class BookingCreate(View):
                         form.account = request.user.id
                         form.save()
                         messages.success(
-                            request, 'Booking created successfully.')
+                            request, 'Booking created successfully')
                         return HttpResponseRedirect(reverse('booking_list'))
                     else:
                         messages.error(
-                            request, 'No table available at this time')
+                            request,
+                            'Sorry, No tables are available at this time')
                         print('error')
 
 
@@ -235,7 +231,7 @@ class BookingUpdate(View):
             if ((form_date < today) or (form_date > day_limit)):
                 messages.error(request, '''
                 Sorry, Bookings can only be made
-                within the next 90 days.''')
+                within the next 90 days''')
                 print('error')
                 return render(
                     request,
@@ -258,12 +254,13 @@ class BookingUpdate(View):
                         form.account = request.user.id
                         form.save()
                         messages.success(
-                            request, 'Booking created successfully.')
+                            request, 'Booking updated successfully')
                         return HttpResponseRedirect(reverse('booking_list'))
                     # if 5 bookings at chosen time and date, error message
                     else:
                         messages.error(
-                            request, 'No table available at this time')
+                            request,
+                            'Sorry, No tables are available at this time')
                         print('error')
                 # if number of guests is 4
                 else:
@@ -274,11 +271,12 @@ class BookingUpdate(View):
                         form.account = request.user.id
                         form.save()
                         messages.success(
-                            request, 'Booking created successfully.')
+                            request, 'Booking updated successfully')
                         return HttpResponseRedirect(reverse('booking_list'))
                     else:
                         messages.error(
-                            request, 'No table available at this time')
+                            request,
+                            'Sorry, No tables are available at this time')
                         print('error')
         return render(
             request,
