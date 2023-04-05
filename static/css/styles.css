@@ -13,6 +13,31 @@
 
 /* Custom CSS */
 
+#submit-review {
+  background-color: gold;
+}
+#submit-review:hover {
+  background-color: blanchedalmond;
+}
+.asteriskField {
+  display: none;
+}
+.comments {
+  padding: 10px;
+  background-color: blanchedalmond;
+  border-radius: 5px;
+}
+
+.comments p:first-child {
+  font-style: italic;
+}
+
+.post-title,
+.post-subtitle {
+  background-color: rgba(245, 126, 39, 0.90);
+  text-align: center;
+}
+
 .card-img-top {
   height:300px
 }

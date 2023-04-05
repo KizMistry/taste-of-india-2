@@ -11,7 +11,7 @@
                     {{ meal.meal_name }}
                 </h1>
                 <!-- Meal author goes before the | the meal's created date goes after -->
-                <p class="post-subtitle">{{ meal.author }} | </p>
+                <p class="post-subtitle">{{ meal.excerpt }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
@@ -79,10 +79,10 @@
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The reviewer's name goes here. Check the model if you're not sure what that is -->
-                        {{ review.name }}
+                        <strong>{{ review.name }}</strong>
                         <span class=" text-muted font-weight-normal">
                             <!-- The review's created date goes here -->
-                            {{ review.created_on }}
+                            <!-- {{ review.created_on }} -->
                         </span> wrote:
                     </p>
                     <!-- The body of the review goes before the | -->
@@ -107,7 +107,7 @@
                 <form method="post" style="margin-top: 1.3em;">
                     {{ review_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <button type="submit" id="submit-review" class="btn">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}

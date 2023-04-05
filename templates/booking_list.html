@@ -47,22 +47,6 @@
                         <td><button id="{{ booking.id }}" class="delete-btn open-modal" name="delete"><i class="fa-solid fa-trash"></i></button></td>
 
                     </tr>
-                    {% comment %}
-                    <div id="deleteModal" class="modal-delete">
-
-                        <div id="delete-confirmation{{ booking.id }}" class="modal-info">
-                            <span class="close-modal" name="close-modal">&times;</span>
-                            <h3>
-                                Are you sure you want to <strong>delete</strong> this booking?
-                            </h2>
-                            <p>
-                                Your booking for {{ booking.name }} at {{ booking.time }} on {{ booking.date }}, seating {{ booking.table_for }} will be cancelled.
-                            </p>
-                            <button class="keep-btn" name="keep"><a href=""></a>No! Keep my Booking</button>
-                            <button class="delete-btn btn-red" name="delete"><a href="{% url 'delete_booking' booking_id=booking.id %}">Delete</a></button>
-                        </div>
-                    </div>
-                    {% endcomment %}
                     {% empty %}
                     <tr>
                         <td colspan="3">You currently have no reservations</td>
