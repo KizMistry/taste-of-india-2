@@ -16,7 +16,7 @@ class Nav(View):
         return render(request, 'index.html')
 
     def about(request):
-        return render(request, 'about.html', {'api_key': API_KEY, })
+        return render(request, 'about.html', {'api_key': settings.API_KEY, })
 
     def meals(request):
         return render(request, 'meal.html')
