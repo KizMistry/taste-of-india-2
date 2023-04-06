@@ -13,6 +13,24 @@
 
 /* Custom CSS */
 
+/* Meal Detail Page */
+div.like-comment-icon{
+  width:50%; 
+}
+
+.btn-like {
+  color: black;
+  border: none;
+  background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+  color: blanchedalmond;
+  background: transparent;
+  border: none;
+}
+
 #submit-review {
   background-color: gold;
 }
@@ -38,6 +56,7 @@
   text-align: center;
 }
 
+/* Meals Page */
 .card-img-top {
   height:300px
 }
@@ -55,10 +74,18 @@
   color: whitesmoke;
 }
 
+/* Menu Link */
+
 #pdf {
   display: inline-block;
   font-size: 10px;
   font-weight: 300;
+}
+
+/* Bookings Page */
+
+#booking-bg {
+  border-radius: 10px;
 }
 
 #create-btn {
@@ -92,7 +119,6 @@
   margin: auto;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 400px;
   box-shadow: 0 0 20px rgb(255 255 255 / 20%);
 }
 
@@ -132,6 +158,8 @@
   color:black;
   text-decoration:none
 }
+
+/* Home Page */
 
 .rowheight {
   height: 300px;
@@ -208,6 +236,8 @@
   background-color: rgba(245, 126, 39, 0.90);
 }
 
+/* Login/Register */
+
 .login-container {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -266,6 +296,8 @@
   cursor: pointer;
 }
 
+/* Custom Media Queries */
+
 @media screen and (max-width: 768px) {
 
   .home-card {
@@ -276,8 +308,78 @@
   }
 
 }
-  
 
+@media only screen and (max-width: 425px) {
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  /* Hide table headers */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    margin: 0 0 1rem 0;
+  }
+  tr:nth-child(odd) {
+    background: #ff9135;
+  }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+  /* Now like a table header */
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 5%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /* Label the data */
+  td:nth-of-type(1):before {
+    content: "Ref#";
+  }
+  td:nth-of-type(2):before {
+    content: "Name:";
+  }
+  td:nth-of-type(3):before {
+    content: "Date:";
+  }
+  td:nth-of-type(4):before {
+    content: "Time:";
+  }
+  td:nth-of-type(5):before {
+    content: "Seating:";
+  }
+  td:nth-of-type(6):before {
+    content: "Edit:";
+  }
+  td:nth-of-type(7):before {
+    content: "Cancel:";
+  }
+
+  .reservation-table td,
+  .reservation-table button,
+  .reservation-table svg{
+    white-space:nowrap;
+    padding:2px
+  }
+
+  .reservation-table{
+    width:100%;
+  }
+  tbody{
+    width:100%
+  }
+  
+}
 
 /* Bootstrap css */
 :root {

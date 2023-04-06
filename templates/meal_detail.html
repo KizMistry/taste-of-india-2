@@ -36,7 +36,7 @@
                 </p>
                 <div class="row">
 
-                    <div class="col-1">
+                    <div class="col-1 like-comment-icon">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'meal_like' meal.slug %}" method="POST">
@@ -53,7 +53,7 @@
                             <span class="text-secondary">{{ meal.number_of_likes }}</span>
                         </strong>
                     </div>
-                    <div class="col-1">
+                    <div class="col-1 like-comment-icon">
                         {% with reviews.count as total_reviews %}
                         <strong class="text-secondary"><i class="far fa-comment"></i>
                             <!-- Our total_reviews variable goes before the closing strong tag -->
