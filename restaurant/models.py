@@ -9,7 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 GUESTS = (
     (2, "1-2"), (4, "3-4"), (6, "5-6"),)
 
-TIMES = (
+TIMES = (  # not in use
     ("12:00", "12:00 PM"), ("13:00", "1:00 PM"),
     ("14:00", "2:00 PM"), ("15:00", "3:00 PM"),
     ("16:00", "4:00 PM"), ("17:00", "5:00 PM"),
@@ -23,7 +23,7 @@ SEATING_CHOICES = [
         (6, '6 Guests'),]
 
 
-class Table(models.Model):
+class Table(models.Model):  # currently not in use
 
     number = models.PositiveIntegerField()
     size = models.IntegerField(choices=SEATING_CHOICES, default=2)

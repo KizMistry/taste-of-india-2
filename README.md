@@ -1,12 +1,8 @@
 # Taste of India
  
-Yoga Utopia is a Yoga, Meditation and Mental-Health website that hopes to provide a universal yoga experience, encouraging both a healthy mind and a healthy body for everyone. Yoga Utopia's goal is to teach visitors the origins and benefits of practicing Yoga, Meditation and the importance of Mental Well-being.
+Welcome to Taste of India, the perfect destination for lovers of authentic Indian cuisine. Our website is designed to provide you with a seamless and immersive experience, where you can not only explore our menu but also make table reservations with ease. We understand the value of your time, so we've made it easy for you to secure a table at your preferred time and date. Additionally, we also have a meal blog page, where you can read about the various dishes we offer, see other user reviews and leave one of your own. We hope that our website will help you discover the taste of India and bring you closer to our culture and traditions.
 
-Yoga Utopia provides beginner-friendly content which is also beneficial to a more experienced Yogi.
-The site has useful information relating to Yoga, Meditation, and Mental-Health that will help educate people interested in each category.
-Yoga Utopia aims to leave people feeling stronger, healthier and happier.
-
-![Taste of India](/assets/readme-media/Yoga-Utopia_index.html.png)
+![Taste of India](/static/assets/readme-media/home.png)
 
 ## Features 
 
@@ -14,80 +10,64 @@ Yoga Utopia aims to leave people feeling stronger, healthier and happier.
 
 - __Navigation Bar__
 
-  - Featured on all four pages, the full responsive navigation bar includes links to the Logo/Name, Home, Yoga, Meditation, Mental-Health page and Sign Up section located on the Home page and is identical in each page to allow for easy navigation.
+  - Featured on all pages, the full responsive navigation bar includes links to the Logo/Name, Home, Menu, Bookings, Meals, About page, Sign Up / Register section. Identical in each page to allow for easy navigation.
   - The navigation bar is responsive and will collapse into a hamburger menu when used on medium and small screens.
   - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
 
-![Nav Bar](/assets/readme-media/navigation-bar.png)
+![Nav Bar](/static/assets/readme-media/navbar.png)
 
 - __The Landing Page Image__
 
-  - The landing page has a photograph with text overlay welcoming the user and informing them Yoga Utopia's goal. 
-  - This section introduces the user to Yoga Utopia with a vibrant image to not only grab their attention but also suggestive towards the capabilities of what can be achieved with Yoga Utopia.
+  - The landing page has a photograph with text overlay informing the user what Taste of India offers.
+  - This section is an informative section that tells the user what can be found on the website.
+  - The user will be advised early as to what is available to them on Taste of India and can make an informed decision as to what page they'd like to visit.
 
-![Landing Page](/assets/readme-media/landing-page.png)
-
-- __What We Offer Section__
-
-  - The what we offer section is an informative section that tells the user what can be found on each of the Yoga, Meditation and Mental-Health pages.
-  - The user will be advised early as to what is available to them on Yoga Utopia and can make an informed decision as to what page they'd like to visit.
-
-![What We Offer](/assets/readme-media/what-we-offer.png)
+![Landing Page](/static/assets/readme-media/landing.png)
 
 - __About Us Section__
 
-  - The about us section gives a more detailed overview to Yoga Utopia's goals, offerings, and benefits. 
-  - This will give the user more of an insight to Yoga Utopia and will help make them feel more comfortable with the content available/provided to them. 
+  - The about us section provides information on opening times, contact info and location of Taste of India. 
+  - The details are made available to the user for any queries they may have or for planning their visit. 
 
-![About Us](/assets/readme-media/about-us.png)
+![About Us](/static/assets/readme-media/about.png)
 
 - __Sign Up Section__
 
-  - This section will allow the user to subscribe to Yoga Utopia's emailed newsletters that will be sent to the user on a weekly basis. The user will be asked to submit their full name and email address.
-  - The newsletter will contain all the up-to date news around the yoga community, provide fresh content weekly, available offers, and the latest Yoga Utopia news.
+  - This section will allow the user to register to Taste of India.
+  - This enables the user to then make table reservations.
 
-![Register / Login](/assets/readme-media/sign-up.png)
-
-- __Contact Section__
-
-  - The contact section includes Yoga Utopia's location, phone, and email details.
-  - The details are made available to the user for any queries they may have for Yoga Utopia and would like a form of contact. 
-
-![Contact](/assets/readme-media/contact.png)
+![Register / Login](/static/assets/readme-media/sign-up.png)
 
 - __The Footer__ 
 
-  - The footer section includes links to the relevant social media sites for Yoga Utopia. The links will open to a new tab to allow easy navigation for the user.
+  - The footer section includes links to the relevant social media sites for Taste of India. The links will open to a new tab to allow easy navigation for the user.
   - The footer is valuable to the user as it encourages them to stay connected via social media
 
-![Footer](/assets/readme-media/footer.png)
+![Footer](/static/assets/readme-media/footer.png)
 
 - __Menu__
 
-  - The Yoga page contains an indepth description of Yoga, its history and the benefits it provides.
-  - The page also includes a Yoga for beginners YouTube video that can be played.
-  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
-  - This will provide the user with educational information about yoga and also provide visual and audible content they can watch and/or listen to while they practice yoga. 
+  - The menu is stored on a PDF which can be accessed through the Navigation bar.
+  - This opens a new browser tab with the menu displayed.
 
-![Menu](/assets/readme-media/yoga-page.png)
+![Menu](/static/assets/readme-media/menu.png)
 
 - __Bookings Page__
 
-  - The Meditation page contains an indepth description of Meditation, its history and the benefits it provides.
-  - The page also includes a Meditation for beginners YouTube video that can be played.
-  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
-  - This will provide the user with educational information about meditation and also provide visual and audible content they can watch and/or listen to while they practice meditation. 
+  - This page shows a list of the users bookings.
+  - The page also includes an edit and delete option beside each booking.
+  - The page is responsive to all screen sizes and will adjust the size of the table accordingly.
+  - This will provide the user with all their booking information and the option to edit or cancel. 
 
-![Bookings](/assets/readme-media/meditation-page.png)
+![Bookings](/static/assets/readme-media/bookings.png)
 
 - __Meals Page__
 
-  - The Mental-Health page contains an indepth definition of Mental Well-being, educational description, it's science, the benefits it provides and the signs of mental-health problems.
-  - The page also includes a Mental-Health self-improvement YouTube video that can be played.
-  - The page is responsive to all screen sizes and will adjust the size of the YouTube video accordingly.
-  - This will provide the user with educational information about mental-health and well-being and also provide visual and audible content they can watch and/or listen to while they practice the techniques in the YouTube video.  
+  - The Meals page contains blog like post for meals offered by Taste of India.
+  - The meals link to a detail page where users can like and leave reviews.
+  - This gives the user an insight into each dish and lets them have their say.
 
-![Meals](/assets/readme-media/mental-health-page.png)
+![Meals](/static/assets/readme-media/mealblog.png)
 
 ### Future Feature Ideas
 
@@ -118,14 +98,24 @@ All sections were tested; Some of the main testing points included:
 | :------------- |:-------------:| :-----:|
 | User clicks all navigation links on home page     | Taken to corresponding page | ✅ |
 | User clicks 'Menu(pdf)' button      | Opens new tab with a PDF of the Menu | ✅ |
+| User logs in / registers | Nav links change and booking becomes available | ✅ |
+| User clicks 'Make Reservation'| Directed to create booking page | ✅ |
+| User completes booking form and submits (valid data) | Booking created and redirected to Bookings page with feedback message | ✅ |
+| User completes booking form and submits (invalid data)| Error / Invalid messages | ✅ |
+| User clicks update booking | Directed to update booking page with prepopulated form | ✅ |
+| User updates booking (valid data) | Booking details updated successfully and redirected to Bookings page with feedback message | ✅ |
+| User updates booking (invalid data) | Error / Invalid messages | ✅ |
+| User clicks delete icon | Modal opens with corresponding booking information | ✅ |
+| User clicks modal Delete button | Booking is deleted, feedback message and booking list updated | ✅ |
+| User clicks modal No button | Modal closes | ✅ |
 | User clicks outside modal area (while modal is open)| Modal closes | ✅ |
-| User clicks 'Play' button before selecting hand     | An alert appears telling the user to select a hand      |   ✅ |
-| User clicks any of the hand buttons | Border turns green and their hand displays in the users pick area       | ✅ |
-| User clicks 'Play' button after selecting hand | Game runs, random hand generated and displayed,<br> correct results message displays and scores updated | ✅  |
-| User clicks 'Reset' button | An alert appears and the scores, user pick, computer pick,<br> results message, and hand selections are reset to defualt | ✅  |
-| Responsiveness of each screen size  | Each section and button adjusted size to fit all device displays |  ❌ |
+| User submits a review | An alert appears telling the user their review is waiting approval | ✅ |
+| Admin adds a meal blog (draft) | new meal blog post created but not displayed on website | ✅ |
+| Admin adds a meal blog (published) | new meal blog post created and displayed on website | ✅ |
+| Admin approves user reviews | review is shown on the corresponding meal post and review count increased| ✅ |
+| User clicks like button on a meal | Like is added to like count | ✅  |
+| User clicks like button on a meal (already liked) | Like is removed from like count | ✅  |
 
-- The table on the Bookings page is not yet responsive to smaller screens
 
 The website was shared with family and friends to test the websites usage.
 
@@ -141,22 +131,23 @@ The website was shared with family and friends to test the websites usage.
 ### Unfixed Bugs
 
 - There is a minor bug with the delete icons on the bookings page: there is no response when clicking directly on the 'trash' icon.
-- Amend url paths
+- Amend url patterns
 
 
 
 ## Deployment
 
-The process of deploying Yoga Utopia to GitHub is detailed below: 
+The process of deploying Taste of India to GitHub is detailed below: 
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
-  - Navigate to the 'Build and Deployment' section
-  - In the Source drop-down menu, select Deploy from a branch
-  - In the Branch drop-down menu, select 'main' branch and '/(root)' folder and click the save button
-  - Once saved, refresh the page. The page will reload with a detailed ribbon display to indicate the successful deployment. 
+- Create a new app on Heroku and connect it to GitHub account
+- Enable Automatic Deploys to automatically deploy code to Heroku whenever changes are pushed to the main branch of the GitHub repository
+- Set up the required environment variables in the Heroku app settings (such as your database connection string or any API keys)
+- Create a Procfile to specify the command that Heroku should use to start your app
+- Make sure code is production-ready by running any necessary build or compilation steps, and ensuring that all dependencies are properly installed
+- Push code to the main branch of the GitHub repository to trigger a deployment to Heroku
+- Monitor the deployment logs in the Heroku dashboard to ensure that the app is starting up correctly and there are no errors. 
 
-The live link can be found here - https://kizmistry.github.io/Yoga-Utopia/
+The live link can be found here - https://taste-of-india.herokuapp.com/
 
 
 ## Credits 

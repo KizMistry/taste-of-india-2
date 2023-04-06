@@ -10,8 +10,6 @@ from django.http import HttpResponseRedirect
 from . import creds
 
 
-# Create your views here.
-
 class Nav(View):
 
     def home(request):

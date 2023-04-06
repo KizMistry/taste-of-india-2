@@ -51,8 +51,6 @@ const buttonPressed = e => {
     // Modals Paragraph is updated with the booking details of the selected row
     modalp.innerHTML = `Your booking for <strong>${name}</strong> at <strong>${time}</strong> on <strong>${date}</strong>, seating <strong>${guests}</strong> will be cancelled.`;
 
-    console.log(name, date, time, guests);
-    console.log(e.target.id);  // Get ID of Clicked Element
   };
   
   // Adds event listener to all delete buttons
