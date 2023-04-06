@@ -89,6 +89,12 @@ Welcome to Taste of India, the perfect destination for lovers of authentic India
 
   - Send an email confirmation of booking details on submission of a successful booking.
 
+## Design
+
+A startbootstap theme was used as a template design which I could then build upon. This enabled a HTML foundation which could then be designed to suit the theme of the restaurant.
+
+[Theme](https://startbootstrap.com/theme/business-casual)
+
 ## Testing 
 
 The Taste of India site works as intended.
