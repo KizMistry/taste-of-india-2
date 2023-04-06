@@ -34,12 +34,32 @@ API_KEY = os.environ.get('API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# LOGGING = {
+# 'version': 1,
+# 'disable_existing_loggers': False,
+# 'handlers': {
+# 'file': {
+# 'level': 'DEBUG',
+# 'class': 'logging.FileHandler',
+# 'filename': 'debug.log',
+# },
+# },
+# 'loggers': {
+# 'django': {
+# 'handlers': ['file'],
+# 'level': 'DEBUG',
+# 'propagate': True,
+# },
+# },
+# }
+
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     'taste-of-india.herokuapp.com',
     'localhost',
-    'https://taste-of-india.herokuapp.com/'
+    'https://taste-of-india.herokuapp.com/',
+    'https://8000-kizmistry-tasteofindia2-q9ygssujmqb.ws-eu93.gitpod.io/',
     ]
 
 
