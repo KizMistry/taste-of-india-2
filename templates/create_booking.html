@@ -8,6 +8,7 @@
         <div class="col-md-8 mt-3 offset-m-2 login-form">
             <h3>Book a Table:</h3>
             <p>Table for: {{ user.username }}</p>
+            <!-- Form to create booking -->
             <form method="POST" style="margin-top: 1.3em;">
                 {{ booking_form | crispy }}
                 {% csrf_token %}

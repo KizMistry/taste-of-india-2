@@ -5,6 +5,7 @@
     <div class="col-12 mt-3 left">
         <h1 class="meal-h1">Meals Blog</h1>
         <div class="row">
+            <!-- Loops through meals created and creates a card for each -->
             {% for meal in meals %}
             <div class="col-md-4">
                 <div class="card mb-4">
@@ -14,7 +15,8 @@
                             <img class="card-img-top"
                                 src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg">
                             {% else %}
-                            <img class="card-img-top" src="{{ meal.featured_image.url }}" alt="picture of {{ meal.meal_name }}">
+                            <img class="card-img-top" src="{{ meal.featured_image.url }}"
+                                alt="picture of {{ meal.meal_name }}">
                             {% endif %}
                             <a href="{% url 'meal_detail' meal.slug %}" class="post-link">
                                 <h2 class="card-title">{{ meal.meal_name }}</h2>
@@ -27,13 +29,11 @@
                     </div>
                 </div>
             </div>
-
             {% if forloop.counter|divisibleby:3 %}
         </div>
         <div class="row">
             {% endif %}
             {% endfor %}
-
         </div>
     </div>
     {% if is_paginated %}

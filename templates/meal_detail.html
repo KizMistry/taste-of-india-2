@@ -16,7 +16,8 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in meal.featured_image.url %}
-                <img src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg" width="100%">
+                <img src="https://cdn.vox-cdn.com/thumbor/aNM9cSJCkTc4-RK1avHURrKBOjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/20059022/shutterstock_1435374326.jpg"
+                    width="100%">
                 {% else %}
                 <img src="{{ meal.featured_image.url }}" width="100%" alt="picture of {{ meal.meal_name }}">
                 {% endif %}
@@ -29,8 +30,7 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <!-- The meal description goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
+                <!-- The meal description -->
                 <p class="card-text ">
                     {{ meal.description | safe }}
                 </p>
@@ -42,9 +42,11 @@
                             <form class="d-inline" action="{% url 'meal_like' meal.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i
+                                        class="fas fa-heart"></i></button>
                                 {% else %}
-                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="restaurantpost_id" value="{{meal.slug}}" class="btn-like"><i
+                                        class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
@@ -56,7 +58,7 @@
                     <div class="col-1 like-comment-icon">
                         {% with reviews.count as total_reviews %}
                         <strong class="text-secondary"><i class="far fa-comment"></i>
-                            <!-- Our total_reviews variable goes before the closing strong tag -->
+                            <!-- Our total reviews -->
                             {{ total_reviews }}
                         </strong>
                         {% endwith %}
@@ -74,34 +76,31 @@
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Reviews:</h3>
             <div class="card-body">
-                <!-- We want a for loop inside the tags to iterate through each review in reviews -->
+                <!-- Loops through all reviews for the meal -->
                 {% for review in reviews %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The reviewer's name goes here. Check the model if you're not sure what that is -->
+                        <!-- The reviewer's name -->
                         <strong>{{ review.name }}</strong>
                         <span class=" text-muted font-weight-normal">
-                            <!-- The review's created date goes here -->
-                            <!-- {{ review.created_on }} -->
                         </span> wrote:
                     </p>
-                    <!-- The body of the review goes before the | -->
+                    <!-- Their review -->
                     {{ review.body | linebreaks }}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+                <!-- User feedback -->
                 {% if reviewed %}
                 <div class="alert alert-success" role="alert">
                     Your review is awaiting approval
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}
-
+                <!-- Form to submit a review -->
                 <h3>Leave a review:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">

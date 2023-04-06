@@ -4,27 +4,29 @@
 
 <div class="container-fluid text-center login-container center">
     <div class="row">
-
-        <!-- Blog Entries Column -->
+        <!-- Opening Hours -->
         <section>
             <h1>About Us</h1>
-            <p>Welcome to our Indian restaurant! We serve a variety of authentic Indian dishes made with fresh ingredients and traditional spices.</p>
-            <p>Our opening hours are from <strong>12pm to 10pm everyday</strong>, so feel free to drop by for lunch, dinner or a late night snack!</p>
+            <p>Welcome to our Indian restaurant! We serve a variety of authentic Indian dishes made with fresh
+                ingredients and traditional spices.</p>
+            <p>Our opening hours are from <strong>12pm to 10pm everyday</strong>, so feel free to drop by for lunch,
+                dinner or a late night snack!</p>
         </section>
+        <!-- Contacts -->
         <section>
             <h2>Contact</h2>
             <p><strong>Tel: 0161 123 4567</strong></p>
             <p><strong>Email: contact@tasteofindia.com</strong></p>
         </section>
-      
+        <!-- Location -->
         <section>
             <h2>Location</h2>
             <p>We are located in Manchester, England, UK:</p>
             <div id="map" style="height: 450px;"></div>
             <script src="{% static 'js/map.js' %}"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+            </script>
         </section>
-        
     </div>
 </div>
 

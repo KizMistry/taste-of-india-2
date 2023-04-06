@@ -7,8 +7,8 @@
     <div id="booking-bg" class="row center">
         <div class="col-md-8 mt-3 offset-m-2 login-form">
             {% if user.is_authenticated %}
+            <!-- Modal -->
             <div id="deleteModal" class="modal-delete">
-
                 <div id="delete-confirmation" class="modal-info">
                     <span id="close-modal" class="close-modal">&times;</span>
                     <h3>
@@ -20,8 +20,8 @@
                     <button id="keep-btn" class="keep-btn" name="keep"></a>No! Keep my Booking</button>
                     <button class="delete-btn btn-red" name="delete"><a id="delete-id" href="#">Delete</a></button>
                 </div>
-
             </div>
+            <!-- User Reservations -->
             <h1>Your Reservations</h1>
             <table class="reservation-table">
                 <thead>
@@ -57,7 +57,7 @@
             <button id="create-btn"><a href="{% url 'create_booking' %}">Make a Reservation</a></button>
 
             {% else %}
-            <h1>Please Login / Register to book a table</h1>
+            <h1>Please <a class="login-register" href="{% url 'account_login' %}">Login</a>  / <a class="login-register" href="{% url 'account_signup' %}">Register</a> to book a table</h1>
             {% endif %}
         </div>
     </div>
