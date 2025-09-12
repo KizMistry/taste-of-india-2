@@ -1,4 +1,5 @@
 asgiref==3.6.0
+whitenoise
 django-cloudinary-storage==0.3.0
 cloudinary==1.41.0
 crispy-bootstrap5==0.7
