@@ -186,6 +186,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # local static
 STATIC_ROOT = BASE_DIR / 'staticfiles'    # where collectstatic puts files
 
+WHITENOISE_KEEP_ONLY_HASHED_FILES = False
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'tasteofindia.cloudinary_storage_patch.PatchedStaticCloudinaryStorage'
 # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
